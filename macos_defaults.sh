@@ -104,13 +104,13 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # where we keep our defaults
-FILES=${HOME}/.osx/defaults/*
+FILES=${HOME}/.macos/defaults/*
 
 for f in $FILES
 do
   echo ""
   cecho "===================================================" $white
-  cecho " Processing $(basename $f) configuration" $blue
+  cecho "==> Processing $(basename $f) configuration:" $blue
   cecho "===================================================" $white
   echo ""
   sh $f

@@ -20,15 +20,14 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-# echo "Speed up Mission Control animations"
+echo "Speed up Mission Control animations"
 defaults write com.apple.dock expose-animation-duration -float 0.1
-#
+
 # echo "Don’t group windows by application in Mission Control"
 # echo "(i.e. use the old Exposé behavior instead)"
 # defaults write com.apple.dock expose-group-by-app -bool false
 
 echo "Set hot corners"
-
 # Possible values:
 #  0: no-op
 #  2: Mission Control

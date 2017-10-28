@@ -16,7 +16,7 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
 # NAME:           finder.sh
-# PURPOSE:        Setup trackpad
+# PURPOSE:        Setup Finder
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
@@ -24,6 +24,7 @@
 # defaults write com.apple.finder QuitMenuItem -bool true
 
 # Finder: disable window animations and Get Info animations
+echo "Disable window animations and Get Info animations"
 defaults write com.apple.finder DisableAllAnimations -bool true
 
 # # Set Desktop as the default location for new Finder windows
@@ -68,6 +69,7 @@ defaults write com.apple.finder DisableAllAnimations -bool true
 # defaults write NSGlobalDomain com.apple.springing.delay -float 0
 
 # Avoid creating .DS_Store files on network or USB volumes
+echo "Avoid creating .DS_Store files on network or USB volumes"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
@@ -106,9 +108,11 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Use list view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+echo "Use list view in all Finder windows by default"
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Disable the warning before emptying the Trash
+echo "Disable the warning before emptying the Trash"
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 # # Enable AirDrop over Ethernet and on unsupported Macs running Lion

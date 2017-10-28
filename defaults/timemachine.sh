@@ -20,8 +20,8 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-# # Prevent Time Machine from prompting to use new hard drives as backup volume
+# echo "Prevent Time Machine from prompting to use new hard drives as backup volume"
 # defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
-# # Disable local Time Machine backups
+# echo "Disable local Time Machine backups"
 # hash tmutil &> /dev/null && sudo tmutil disablelocal
