@@ -51,6 +51,9 @@ blue='\033[0;34m'
 magenta='\033[0;35m'
 cyan='\033[0;36m'
 
+# where we keep our defaults
+FILES=${HOME}/.macos/defaults/*
+
 #  Reset text attributes to normal
 alias Reset="tput sgr0"
 
@@ -103,9 +106,6 @@ osascript -e 'tell application "System Preferences" to quit'
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# where we keep our defaults
-FILES=${HOME}/.macos/defaults/*
-
 for f in $FILES
 do
   echo ""
@@ -139,7 +139,7 @@ applications=(
   "Transmission"
   "Twitter"
   "iCal"
-  # "iTerm2"
+  "iTerm2"
 )
 
 for i in "${applications[@]}"; do
