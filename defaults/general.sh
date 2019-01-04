@@ -38,45 +38,54 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 # echo "Save to disk (not to iCloud) by default"
 # defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
-# # Disable smart quotes as they’re annoying when typing code
-# defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-#
-# # Disable smart dashes as they’re annoying when typing code
+# echo "Disable automatic capitalization as it’s annoying when typing code"
+# defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+# echo "Disable smart dashes as they’re annoying when typing code"
 # defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# echo "Disable automatic period substitution as it’s annoying when typing code"
+# defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+# echo "Disable smart quotes as they’re annoying when typing code"
+# defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+# echo "Disable auto-correct"
+# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # echo "Set sidebar icon size to medium"
 # defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
-#
+
 # echo "Always show scrollbars"
 # defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # # Possible values: `WhenScrolling`, `Automatic` and `Always`
-#
+
 # echo "Increase window resize speed for Cocoa applications"
 # defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
-#
+
 # echo "Expand save panel by default"
 # defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 # defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
-#
+
 # echo "Expand print panel by default"
 # defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 # defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
-#
+
 # echo "Disable the “Are you sure you want to open this application?” dialog"
 # defaults write com.apple.LaunchServices LSQuarantine -bool false
-#
+
 # echo "Remove duplicates in the “Open With” menu (also see `lscleanup` alias)"
 # /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
-#
+
 # echo "Display ASCII control characters using caret notation in standard text views"
 # echo "Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`"
 # defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
-#
+
 # echo "Disable Resume system-wide"
 # defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
-#
+
 # echo "Disable automatic termination of inactive apps"
 # defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
-#
+
 # echo "Set Help Viewer windows to non-floating mode"
 # defaults write com.apple.helpviewer DevMode -bool true

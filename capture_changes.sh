@@ -68,85 +68,37 @@ cecho() {
 }
 
 # identify yourself
-cecho "Running: $progname, version $ver." $red
+cecho "Running: $progname, version $ver." $blue
 
-# Set continue to false by default
-CONTINUE=false
+# Instructions:
+# 1) Do a 'Before' run to save the current settings
+# 2) Then launch System Preferences and make a change via the GUI. 
+#    Best to do only one change at a time, then quit System Preferences.
+# 3) Then do an 'After' run to see what file changed.
+# 4) Then diff the plists:
+#    diff -u <(plist before/Preferences/com.apple.loginwindow.plist) <(plist after/Preferences/com.apple.loginwindow.plist)
+# 5) At this point we have located the setting. Confirm we have it with defaults:
+#    $ defaults read /Library/Preferences/com.apple.loginwindow SHOWFULLNAME
+#    $ sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWFULLNAME -bool false
+#    $ defaults read /Library/Preferences/com.apple.loginwindow SHOWFULLNAME
+# 6) Launch System Preferences and confirm it changed.
 
 echo ""
-cecho "###############################################" $red
-cecho "#        DO NOT RUN THIS SCRIPT BLINDLY       #" $red
-cecho "#         YOU'LL PROBABLY REGRET IT...        #" $red
-cecho "#                                             #" $red
-cecho "#     REVIEW THE SCRIPTS IN THE /DEFAULTS     #" $red
-cecho "#    FOLDER AND EDIT TO SUIT *YOUR* NEEDS!    #" $red
-cecho "###############################################" $red
-echo ""
-
-cecho "Have you reviewed the scripts you're about to run and " $red
-cecho "understand they will make changes to your computer? (y/n)" $red
+cecho "Is this a 'Before' run or an 'After' run? (B/A) " $blue
 read -r response
 case $response in
-  [yY])
-  CONTINUE=true
+  B)
+    sudo cp -r /Library/Preferences ~/@before
+    ;;
+  A)
+    sudo cp -r /Library/Preferences ~/@after
+    
+    # See which files changed:
+    sudo diff -ur ~/@before ~/@after
+    
+    # Remove files
+    sudo rm -rf ~/@before
+    sudo rm -rf ~/@after
+    ;;
 esac
-
-if ! $CONTINUE; then
-  # Check if we're continuing and output a message if not
-  cecho "Always better to verify first!" $red
-  exit
-fi
-
-# Close any open System Preferences panes, to prevent them from overriding
-# settings we’re about to change
-osascript -e 'tell application "System Preferences" to quit'
-
-# Here we go. Ask for the administrator password upfront and run a
-# keep-alive to update existing `sudo` time stamp until script has finished
-sudo -v
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-for f in $FILES
-do
-  echo ""
-  cecho "===================================================" $white
-  cecho "==> Processing $(basename $f) configuration:" $blue
-  cecho "===================================================" $white
-  echo ""
-  sh $f
-done
-
-echo ""
-cecho "===================================================" $white
-cecho " Restart affected applications" $blue
-cecho "===================================================" $white
-echo ""
-
-applications=(
-  "Activity Monitor"
-  "Address Book"
-  "Calendar"
-  "Contacts"
-  "cfprefsd"
-  "Dock"
-  "Finder"
-  "Mail"
-  "Messages"
-  "Safari"
-  "SizeUp"
-  "SystemUIServer"
-  "Terminal"
-  "Transmission"
-  "Twitter"
-  "iCal"
-  "iTerm2"
-)
-
-for i in "${applications[@]}"; do
-  killall "${i}" > /dev/null 2>&1
-done
-
-cecho "All Done!" $green
-cecho "Note: some of these changes require a logout/restart to take effect." $red
-
 exit 0

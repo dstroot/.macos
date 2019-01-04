@@ -34,19 +34,19 @@ defaults write com.apple.dock minimize-to-application -bool true
 
 # echo "Enable spring loading for all Dock items"
 # defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
-#
-# echo "Show indicator lights for open applications in the Dock"
-# defaults write com.apple.dock show-process-indicators -bool true
+
+echo "Show indicator lights for open applications in the Dock"
+defaults write com.apple.dock show-process-indicators -bool true
 
 echo "Don’t animate opening applications from the Dock"
 defaults write com.apple.dock launchanim -bool false
 
 # echo "Disable Dashboard"
 # defaults write com.apple.dashboard mcx-disabled -bool true
-#
+
 # echo "Don’t show Dashboard as a Space"
 # defaults write com.apple.dock dashboard-in-overlay -bool true
-#
+
 # echo "Don’t automatically rearrange Spaces based on most recent use"
 # defaults write com.apple.dock mru-spaces -bool false
 
@@ -61,10 +61,13 @@ defaults write com.apple.dock autohide -bool true
 
 # echo "Make Dock icons of hidden applications translucent"
 # defaults write com.apple.dock showhidden -bool true
-#
+
+echo "Don’t show recent applications in Dock"
+defaults write com.apple.dock show-recents -bool false
+
 # echo "Disable the Launchpad gesture (pinch with thumb and three fingers)"
 # #defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
-#
+
 # echo "Reset Launchpad, but keep the desktop wallpaper intact"
 # find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
 
@@ -73,6 +76,6 @@ defaults write com.apple.dock autohide -bool true
 
 # echo "Add a spacer to the left side of the Dock (where the applications are)"
 # #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
-#
+
 # echo "Add a spacer to the right side of the Dock (where the Trash is)"
 # #defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'

@@ -15,26 +15,10 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           screen.sh
-# PURPOSE:        Setup screen
+# NAME:           timezone.sh
+# PURPOSE:        Setup timezone
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-echo "Enable Dark mode"
-osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
-
-echo "Save screenshots to the desktop"
-defaults write com.apple.screencapture location -string "${HOME}/Desktop"
-
-echo "Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)"
-defaults write com.apple.screencapture type -string "png"
-
-echo "Disable shadow in screenshots"
-defaults write com.apple.screencapture disable-shadow -bool true
-# 
-# Echo "Enable subpixel font rendering on non-Apple LCDs"
-# # Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
-# defaults write NSGlobalDomain AppleFontSmoothing -int 1
-# 
-# Echo "Enable HiDPI display modes (requires restart)"
-# sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+# echo "Set the timezone; see `sudo systemsetup -listtimezones` for other values"
+# systemsetup -settimezone "America/Los_Angeles" > /dev/null

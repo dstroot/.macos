@@ -15,26 +15,25 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           screen.sh
-# PURPOSE:        Setup screen
+# NAME:           keyboard.sh
+# PURPOSE:        Setup keyboard
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-echo "Enable Dark mode"
-osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
+# echo "Enable full keyboard access for all controls"
+# echo "(e.g. enable Tab in modal dialogs)"
+# defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-echo "Save screenshots to the desktop"
-defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+# echo "Use scroll gesture with the Ctrl (^) modifier key to zoom"
+# defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+# defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 
-echo "Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)"
-defaults write com.apple.screencapture type -string "png"
+# echo "Follow the keyboard focus while zoomed in"
+# defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
-echo "Disable shadow in screenshots"
-defaults write com.apple.screencapture disable-shadow -bool true
-# 
-# Echo "Enable subpixel font rendering on non-Apple LCDs"
-# # Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
-# defaults write NSGlobalDomain AppleFontSmoothing -int 1
-# 
-# Echo "Enable HiDPI display modes (requires restart)"
-# sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+echo "Disable press-and-hold for keys in favor of key repeat"
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# echo "Set a blazingly fast keyboard repeat rate"
+# defaults write NSGlobalDomain KeyRepeat -int 1
+# defaults write NSGlobalDomain InitialKeyRepeat -int 10

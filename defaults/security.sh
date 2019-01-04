@@ -20,7 +20,7 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 # Based on:
-# https://github.com/drduh/OS-X-Security-and-Privacy-Guide
+# https://github.com/drduh/macOS-Security-and-Privacy-Guide
 # https://benchmarks.cisecurity.org/tools2/osx/CIS_Apple_OSX_10.11_Benchmark_v1.0.0.pdf
 # ------------------------------------------------------------------------------
 
@@ -32,21 +32,14 @@ echo "Require password imemdiately"
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-# Enable firewall. Possible values:
-#   0 = off
-#   1 = on for specific sevices
-#   2 = on for essential services
 echo "Turn on Firewall"
-sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
 
-# Enable firewall logging
 echo "Enable firewall logging"
-sudo defaults write /Library/Preferences/com.apple.alf loggingenabled -int 1
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setloggingmode on
 
-# Enable stealth mode
-# Source: https://support.apple.com/kb/PH18642
 echo "Enable stealth mode"
-sudo defaults write /Library/Preferences/com.apple.alf stealthenabled -int 1
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
 
 # Do not automatically allow signed software to receive incoming connections
 #sudo defaults write /Library/Preferences/com.apple.alf allowsignedenabled -bool false

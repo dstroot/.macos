@@ -41,30 +41,4 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # echo "Increase sound quality for Bluetooth headphones/headsets"
 # defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
-#
-# echo "Enable full keyboard access for all controls"
-# echo "(e.g. enable Tab in modal dialogs)"
-# defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-# echo "Use scroll gesture with the Ctrl (^) modifier key to zoom"
-# defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-# defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
-
-# echo "Follow the keyboard focus while zoomed in"
-# defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
-
-echo "Disable press-and-hold for keys in favor of key repeat"
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-
-# echo "Set a blazingly fast keyboard repeat rate"
-# defaults write NSGlobalDomain KeyRepeat -int 1
-# defaults write NSGlobalDomain InitialKeyRepeat -int 10
-
-# echo "Set language and text formats"
-# defaults write NSGlobalDomain AppleLanguages -array "en"
-# defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
-# defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
-# defaults write NSGlobalDomain AppleMetricUnits -bool false
-#
-# echo "Set the timezone; see `sudo systemsetup -listtimezones` for other values"
-# systemsetup -settimezone "America/Los_Angeles" > /dev/null
