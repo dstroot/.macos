@@ -39,6 +39,3 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # echo "Disable “natural” (Lion-style) scrolling"
 # defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
-# echo "Increase sound quality for Bluetooth headphones/headsets"
-# defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
-
