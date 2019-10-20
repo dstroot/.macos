@@ -31,7 +31,7 @@ function add_app_to_dock {
 
   launchservices_path="/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister"
 
-  app_path=$(${launchservices_path} -dump | grep -o "/.*${app_name}.app" | grep -v -E "Backups|Caches|TimeMachine|Temporary|/Volumes/${app_name}" | uniq | sort | head -n1)
+  app_path=$(${launchservices_path} -dump | grep -o "/.*${app_name}.app" | grep -v -E "Backups|Caches|TimeMachine|Temporary|Xcode.app|/Volumes/${app_name}" | uniq | sort | head -n1)
 
   if open -Ra "${app_path}"; then
       echo "$app_path added to the Dock."
@@ -63,7 +63,7 @@ function reset_dock {
 # WARNING: permanently clears your existing dock
 clear_dock
 
-add_app_to_dock "Siri"
+# add_app_to_dock "Siri"
 add_app_to_dock "Launchpad"
 add_app_to_dock "Google Chrome"
 add_app_to_dock "Safari"
@@ -76,7 +76,8 @@ add_app_to_dock "Maps"
 add_app_to_dock "Photos"
 add_app_to_dock "Messages"
 add_app_to_dock "FaceTime"
-add_app_to_dock "iTunes"  # TODO Catalina 
+add_app_to_dock "Music"  # TODO Catalina "Music"
+add_app_to_dock "TV"  # TODO Catalina
 add_app_to_dock "Spotify"
 add_app_to_dock "App Store"
 add_app_to_dock "Visual Studio Code"
