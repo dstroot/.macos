@@ -24,7 +24,7 @@
 # sudo systemsetup -setrestartfreeze on
 
 echo "Menu bar: Set date and time format e.g. Sun 11 Aug 16:55"
-defaults write com.apple.menuextra.clock DateFormat -string "EEE MMM d  h:mm:ss a"
+defaults write com.apple.menuextra.clock "DateFormat" -string "EEE MMM d h:mm:ss a"
 
 # echo "Disable the sound effects on boot."
 # sudo nvram SystemAudioVolume=" "
