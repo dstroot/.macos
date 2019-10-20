@@ -28,8 +28,11 @@ function add_app_to_dock {
   # example add_app_to_dock "Terminal"
 
   app_name="${1}"
+
   launchservices_path="/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister"
+
   app_path=$(${launchservices_path} -dump | grep -o "/.*${app_name}.app" | grep -v -E "Backups|Caches|TimeMachine|Temporary|/Volumes/${app_name}" | uniq | sort | head -n1)
+
   if open -Ra "${app_path}"; then
       echo "$app_path added to the Dock."
       defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>${app_path}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
@@ -60,19 +63,46 @@ function reset_dock {
 # WARNING: permanently clears your existing dock
 clear_dock
 
-add_app_to_dock "System Preferences"
-add_app_to_dock "Activity Monitor"
-add_spacer_to_dock
-add_app_to_dock "Microsoft Outlook"
+add_app_to_dock "Siri"
+add_app_to_dock "Launchpad"
 add_app_to_dock "Google Chrome"
-add_app_to_dock "Microsoft Excel"
-add_app_to_dock "Microsoft Word"
-add_app_to_dock "Microsoft PowerPoint"
-add_app_to_dock "kitty"
+add_app_to_dock "Safari"
+add_app_to_dock "Mail"
+add_app_to_dock "Contacts"
+add_app_to_dock "Calendar"
+add_app_to_dock "Notes"
+add_app_to_dock "Reminders"
+add_app_to_dock "Maps"
+add_app_to_dock "Photos"
+add_app_to_dock "Messages"
+add_app_to_dock "FaceTime"
+add_app_to_dock "iTunes"  # TODO Catalina 
+add_app_to_dock "Spotify"
+add_app_to_dock "App Store"
 add_app_to_dock "Visual Studio Code"
-add_app_to_dock "SelfControl"
-add_app_to_dock "Skype"
-add_spacer_to_dock
+add_app_to_dock "System Preferences"
+add_app_to_dock "iTerm"
+add_app_to_dock "Insomnia"
+add_app_to_dock "Kitematic"
+add_app_to_dock "Microsoft Remote Desktop"
+add_app_to_dock "Microsoft Word"
+add_app_to_dock "Microsoft Excel"
+add_app_to_dock "Microsoft PowerPoint"
+add_app_to_dock "Microsoft Outlook"
+
+
+# add_app_to_dock "Activity Monitor"
+# add_spacer_to_dock
+# add_app_to_dock "Microsoft Outlook"
+# add_app_to_dock "Google Chrome"
+# add_app_to_dock "Microsoft Excel"
+# add_app_to_dock "Microsoft Word"
+# add_app_to_dock "Microsoft PowerPoint"
+# add_app_to_dock "kitty"
+# add_app_to_dock "Visual Studio Code"
+# add_app_to_dock "SelfControl"
+# add_app_to_dock "Skype"
+# add_spacer_to_dock
 
 # refresh your dock to see the changes
 killall Dock
