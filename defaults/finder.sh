@@ -20,6 +20,10 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
+echo "###############################################################################"
+echo "# Finder                                                                      #"
+echo "###############################################################################"
+
 # echo "Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons"
 # defaults write com.apple.finder QuitMenuItem -bool true
 

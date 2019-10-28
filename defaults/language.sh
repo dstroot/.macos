@@ -20,6 +20,10 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
+echo "###############################################################################"
+echo "# Language                                                                    #"
+echo "###############################################################################"
+
 echo "Language: Set language and text formats"
 defaults write NSGlobalDomain AppleLanguages -array "en"
 defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"

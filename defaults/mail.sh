@@ -20,23 +20,27 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-echo "Disable send and reply animations in Mail.app"
+echo "###############################################################################"
+echo "# Mail                                                                        #"
+echo "###############################################################################"
+
+echo "Mail: Disable send and reply animations in Mail.app"
 defaults write com.apple.mail DisableReplyAnimations -bool true
 defaults write com.apple.mail DisableSendAnimations -bool true
 
-# echo "Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app"
+# echo "Mail: Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app"
 # defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
-echo "Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app"
+echo "Mail: Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app"
 defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
 
-# echo "Display emails in threaded mode, sorted by date (oldest at the top)"
+# echo "Mail: Display emails in threaded mode, sorted by date (oldest at the top)"
 # defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
 # defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
 # defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
 
-# echo "Disable inline attachments (just show the icons)"
+# echo "Mail: Disable inline attachments (just show the icons)"
 # defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 
-# echo "Disable automatic spell checking"
+# echo "Mail: Disable automatic spell checking"
 # defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnabled"

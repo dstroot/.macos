@@ -20,144 +20,17 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-# https://github.com/rpavlick/add_to_dock
-# https://gist.github.com/kamui545/c810eccf6281b33a53e094484247f5e8
+source "./dock_functions.sh"
 
-# adds an application to macOS Dock
-# usage: add_app_to_dock "Application Name" 
-# example add_app_to_dock "Terminal"
-function add_app_to_dock {
-  app_name="${1}"
+echo "###############################################################################"
+echo "# Dock                                                                        #"
+echo "###############################################################################"
 
-  launchservices_path="/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister"
-
-  app_path=$(${launchservices_path} -dump | grep -o "/.*${app_name}.app" | grep -v -E "Backups|Caches|TimeMachine|Temporary|Xcode.app|/Volumes/${app_name}" | uniq | sort | head -n1)
-
-  if open -Ra "${app_path}"; then
-      echo "$app_path added to the Dock."
-      defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>${app_path}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
-  else
-      echo "ERROR: $1 not found." 1>&2
-  fi
-}
-
-# adds a folder to macOS Dock
-# usage: add_folder_to_dock "Folder Path" -a n -d n -v n
-# example: add_folder_to_dock "~/Downloads" -a 2 -d 0 -v 1
-# key:
-# -a or --arrangement
-#   1 -> Name
-#   2 -> Date Added
-#   3 -> Date Modified
-#   4 -> Date Created
-#   5 -> Kind
-# -d or --displayAs
-#   0 -> Stack
-#   1 -> Folder
-# -v or --showAs
-#   0 -> Automatic
-#   1 -> Fan
-#   2 -> Grid
-#   3 -> List
-function add_folder_to_dock {
-    folder="${1}"
-    arrangement="1"
-    displayAs="0"
-    showAs="0"
-
-    while [[ "$#" -gt 0 ]]; do
-        case $1 in
-            -a|--arrangement)
-                if [[ $2 =~ ^[1-5]$ ]]; then
-                    arrangement="${2}"
-                fi
-                ;;
-            -d|--displayAs)
-                if [[ $2 =~ ^[0-1]$ ]]; then
-                    displayAs="${2}"
-                fi
-                ;;
-            -v|--showAs)
-                if [[ $2 =~ ^[0-3]$ ]]; then
-                    showAs="${2}"
-                fi
-                ;;
-        esac
-        shift
-    done
-
-    if [ -d "$folder" ]; then
-        echo "$folder added to the Dock."
-        defaults write com.apple.dock persistent-others -array-add "<dict>
-                <key>tile-data</key>
-                <dict>
-                    <key>arrangement</key>
-                    <integer>${arrangement}</integer>
-                    <key>displayas</key>
-                    <integer>${displayAs}</integer>
-                    <key>file-data</key>
-                    <dict>
-                        <key>_CFURLString</key>
-                        <string>file://${folder}</string>
-                        <key>_CFURLStringType</key>
-                        <integer>15</integer>
-                    </dict>
-                    <key>file-type</key>
-                    <integer>2</integer>
-                    <key>showas</key>
-                    <integer>${showAs}</integer>
-                </dict>
-                <key>tile-type</key>
-                <string>directory-tile</string>
-            </dict>"
-    else
-        echo "ERROR: Folder $folder not found."
-    fi
-}
-
-# adds an empty space to macOS Dock
-function add_spacer_to_dock {
-    defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'
-}
-
-# adds an empty small space to macOS Dock
-function add_small_spacer_to_dock {
-    defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}'
-}
-
-function clear_apps_from_dock {
-    defaults delete com.apple.dock persistent-apps
-}
-
-function clear_others_from_dock {
-    defaults delete com.apple.dock persistent-others
-}
-
-# removes all icons from macOS Dock
-function clear_dock {
-    clear_apps_from_dock
-    clear_others_from_dock
-}
-
-# reset macOS Dock to default settings
-function reset_dock {
-  defaults delete com.apple.dock
-  killall Dock
-}
-
-function disable_recent_apps_from_dock {
-    defaults write com.apple.dock show-recents -bool false
-}
-
-function enable_recent_apps_from_dock {
-    defaults write com.apple.dock show-recents -bool true
-}
-
-# echo "customizing dock application icons"
+echo "Dock: customizing dock application icons"
 # WARNING: permanently clears your existing dock
 clear_dock
 
-# add_app_to_dock "Siri"
+# apps
 add_app_to_dock "Launchpad"
 add_app_to_dock "Google Chrome"
 add_app_to_dock "Safari"
@@ -185,85 +58,164 @@ add_app_to_dock "Microsoft Excel"
 add_app_to_dock "Microsoft PowerPoint"
 add_app_to_dock "Microsoft Outlook"
 
+# folders
+add_folder_to_dock "${HOME}/Downloads" -a 2 -d 0 -v 1
 
-# add_app_to_dock "Activity Monitor"
-# add_spacer_to_dock
-# add_app_to_dock "Microsoft Outlook"
-# add_app_to_dock "Google Chrome"
-# add_app_to_dock "Microsoft Excel"
-# add_app_to_dock "Microsoft Word"
-# add_app_to_dock "Microsoft PowerPoint"
-# add_app_to_dock "kitty"
-# add_app_to_dock "Visual Studio Code"
-# add_app_to_dock "SelfControl"
-# add_app_to_dock "Skype"
-# add_spacer_to_dock
-
-# refresh your dock to see the changes
-killall Dock
-
-#=====
-
-
-
-
-
-# echo "Enable highlight hover effect for the grid view of a stack (Dock)"
+# echo "Dock: Enable highlight hover effect for the grid view of a stack (Dock)"
 # defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
-echo "Set the icon size of Dock items to 50 pixels"
+echo "Dock: Set the icon size of Dock items to 50 pixels"
 defaults write com.apple.dock tilesize -int 50
 
-echo "Change minimize/maximize window effect"
+echo "Dock: Change minimize/maximize window effect"
 defaults write com.apple.dock mineffect -string "scale"
 
-echo "Minimize windows into their application’s icon"
+echo "Dock: Minimize windows into their application’s icon"
 defaults write com.apple.dock minimize-to-application -bool true
 
-# echo "Enable spring loading for all Dock items"
+# echo "Dock: Enable spring loading for all Dock items"
 # defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 
-echo "Show indicator lights for open applications in the Dock"
+echo "Dock: Show indicator lights for open applications in the Dock"
 defaults write com.apple.dock show-process-indicators -bool true
 
-echo "Don’t animate opening applications from the Dock"
+echo "Dock: Don’t animate opening applications from the Dock"
 defaults write com.apple.dock launchanim -bool false
 
-# echo "Disable Dashboard"
+# echo "Dock: Disable Dashboard"
 # defaults write com.apple.dashboard mcx-disabled -bool true
 
-# echo "Don’t show Dashboard as a Space"
+# echo "Dock: Don’t show Dashboard as a Space"
 # defaults write com.apple.dock dashboard-in-overlay -bool true
 
-# echo "Don’t automatically rearrange Spaces based on most recent use"
+# echo "Dock: Don’t automatically rearrange Spaces based on most recent use"
 # defaults write com.apple.dock mru-spaces -bool false
 
-echo "Remove the auto-hiding Dock delay"
+echo "Dock: Remove the auto-hiding Dock delay"
 defaults write com.apple.dock autohide-delay -float 0
 
-echo "Remove the animation when hiding/showing the Dock"
+echo "Dock: Remove the animation when hiding/showing the Dock"
 defaults write com.apple.dock autohide-time-modifier -float 0
 
-echo "Automatically hide and show the Dock"
+echo "Dock: Automatically hide and show the Dock"
 defaults write com.apple.dock autohide -bool true
 
-# echo "Make Dock icons of hidden applications translucent"
+# echo "Dock: Make Dock icons of hidden applications translucent"
 # defaults write com.apple.dock showhidden -bool true
 
-echo "Don’t show recent applications in Dock"
+echo "Dock: Don’t show recent applications in Dock"
 defaults write com.apple.dock show-recents -bool false
 
-# echo "Disable the Launchpad gesture (pinch with thumb and three fingers)"
+# echo "Dock: Disable the Launchpad gesture (pinch with thumb and three fingers)"
 # #defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 
-# echo "Reset Launchpad, but keep the desktop wallpaper intact"
+# echo "Dock: Reset Launchpad, but keep the desktop wallpaper intact"
 # find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
 
-# echo "Add iOS Simulator to Launchpad"
+# echo "Dock: Add iOS Simulator to Launchpad"
 # sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app" "/Applications/iOS Simulator.app"
 
-# echo "Add a spacer to the left side of the Dock (where the applications are)"
-# #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
 
-# echo "Add a spacer to the right side of the Dock (where the Trash is)"
-# #defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
+
+
+
+
+
+
+# ###############################################################################
+# # Dock, Dashboard, and hot corners                                            #
+# ###############################################################################
+
+# # Enable highlight hover effect for the grid view of a stack (Dock)
+# defaults write com.apple.dock mouse-over-hilite-stack -bool true
+
+# # Set the icon size of Dock items to 36 pixels
+# defaults write com.apple.dock tilesize -int 36
+
+# # Change minimize/maximize window effect
+# defaults write com.apple.dock mineffect -string "scale"
+
+# # Minimize windows into their application’s icon
+# defaults write com.apple.dock minimize-to-application -bool true
+
+# # Enable spring loading for all Dock items
+# defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
+
+# # Show indicator lights for open applications in the Dock
+# defaults write com.apple.dock show-process-indicators -bool true
+
+# # Wipe all (default) app icons from the Dock
+# # This is only really useful when setting up a new Mac, or if you don’t use
+# # the Dock to launch apps.
+# #defaults write com.apple.dock persistent-apps -array
+
+# # Show only open applications in the Dock
+# #defaults write com.apple.dock static-only -bool true
+
+# # Don’t animate opening applications from the Dock
+# defaults write com.apple.dock launchanim -bool false
+
+# # Speed up Mission Control animations
+# defaults write com.apple.dock expose-animation-duration -float 0.1
+
+# # Don’t group windows by application in Mission Control
+# # (i.e. use the old Exposé behavior instead)
+# defaults write com.apple.dock expose-group-by-app -bool false
+
+# # Disable Dashboard
+# defaults write com.apple.dashboard mcx-disabled -bool true
+
+# # Don’t show Dashboard as a Space
+# defaults write com.apple.dock dashboard-in-overlay -bool true
+
+# # Don’t automatically rearrange Spaces based on most recent use
+# defaults write com.apple.dock mru-spaces -bool false
+
+# # Remove the auto-hiding Dock delay
+# defaults write com.apple.dock autohide-delay -float 0
+# # Remove the animation when hiding/showing the Dock
+# defaults write com.apple.dock autohide-time-modifier -float 0
+
+# # Automatically hide and show the Dock
+# defaults write com.apple.dock autohide -bool true
+
+# # Make Dock icons of hidden applications translucent
+# defaults write com.apple.dock showhidden -bool true
+
+# # Don’t show recent applications in Dock
+# defaults write com.apple.dock show-recents -bool false
+
+# # Disable the Launchpad gesture (pinch with thumb and three fingers)
+# #defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
+
+# # Reset Launchpad, but keep the desktop wallpaper intact
+# find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
+
+# # Add iOS & Watch Simulator to Launchpad
+# sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app"
+# sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (Watch).app" "/Applications/Simulator (Watch).app"
+
+
+
+# # Hot corners
+# # Possible values:
+# #  0: no-op
+# #  2: Mission Control
+# #  3: Show application windows
+# #  4: Desktop
+# #  5: Start screen saver
+# #  6: Disable screen saver
+# #  7: Dashboard
+# # 10: Put display to sleep
+# # 11: Launchpad
+# # 12: Notification Center
+# # 13: Lock Screen
+# # Top left screen corner → Mission Control
+# defaults write com.apple.dock wvous-tl-corner -int 2
+# defaults write com.apple.dock wvous-tl-modifier -int 0
+# # Top right screen corner → Desktop
+# defaults write com.apple.dock wvous-tr-corner -int 4
+# defaults write com.apple.dock wvous-tr-modifier -int 0
+# # Bottom left screen corner → Start screen saver
+# defaults write com.apple.dock wvous-bl-corner -int 5
+# defaults write com.apple.dock wvous-bl-modifier -int 0

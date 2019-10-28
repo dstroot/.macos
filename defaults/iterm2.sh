@@ -20,6 +20,10 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
+echo "###############################################################################"
+echo "# iTerm2                                                                      #"
+echo "###############################################################################"
+
 # Don’t display the annoying prompt when quitting iTerm
 echo "iTerm2: Don’t display the annoying prompt when quitting iTerm"
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false

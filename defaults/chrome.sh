@@ -20,9 +20,9 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-###############################################################################
-# Google Chrome & Google Chrome Canary                                        #
-###############################################################################
+# echo "###############################################################################"
+# echo "# Google Chrome                                                               #"
+# echo "###############################################################################"
 
 # echo "Disable the all too sensitive backswipe on trackpads"
 # defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false

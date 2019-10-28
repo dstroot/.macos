@@ -20,6 +20,10 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
+echo "###############################################################################"
+echo "# Keyboard                                                                    #"
+echo "###############################################################################"
+
 # echo "Keyboard: Enable full keyboard access for all controls"
 # echo "(e.g. enable Tab in modal dialogs)"
 # defaults write NSGlobalDomain AppleKeyboardUIMode -int 3

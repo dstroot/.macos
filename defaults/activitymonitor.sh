@@ -20,15 +20,19 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-# echo "Show the main window when launching Activity Monitor"
+# echo "###############################################################################"
+# echo "# Activity Monitor                                                            #"
+# echo "###############################################################################"
+
+# echo "Activity Monitor: Show the main window when launching Activity Monitor"
 # defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
 #
-# echo "Visualize CPU usage in the Activity Monitor Dock icon"
+# echo "Activity Monitor: Visualize CPU usage in the Activity Monitor Dock icon"
 # defaults write com.apple.ActivityMonitor IconType -int 5
 #
-# echo "Show all processes in Activity Monitor"
+# echo "Activity Monitor: Show all processes in Activity Monitor"
 # defaults write com.apple.ActivityMonitor ShowCategory -int 0
 #
-# echo "Sort Activity Monitor results by CPU usage"
+# echo "Activity Monitor: Sort Activity Monitor results by CPU usage"
 # defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 # defaults write com.apple.ActivityMonitor SortDirection -int 0
