@@ -20,11 +20,8 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-echo "Only use UTF-8 in Terminal.app"
+echo "Terminal: Only use UTF-8 in Terminal.app"
 defaults write com.apple.terminal StringEncodings -array 4
-
-echo "Don’t display the annoying prompt when quitting iTerm"
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 # -------------------------------------------
 # Notes:

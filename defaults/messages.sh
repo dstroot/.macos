@@ -20,10 +20,6 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-# echo "###############################################################################"
-# echo "# Messages                                                                        #"
-# echo "###############################################################################"
-
 # echo "Disable automatic emoji substitution (i.e. use plain text smileys)"
 # defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
 

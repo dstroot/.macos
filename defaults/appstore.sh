@@ -20,10 +20,6 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-echo "###############################################################################"
-echo "# Mac App Store                                                               #"
-echo "###############################################################################"
-
 # echo "App Store: Enable the WebKit Developer Tools in the Mac App Store"
 # defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 

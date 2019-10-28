@@ -20,10 +20,6 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-echo "###############################################################################"
-echo "# Mission Control                                                             #"
-echo "###############################################################################"
-
 echo "Mission Control: Speed up Mission Control animations"
 defaults write com.apple.dock expose-animation-duration -float 0.1
 

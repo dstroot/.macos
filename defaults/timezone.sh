@@ -20,5 +20,5 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-echo "Set the timezone; see `sudo systemsetup -listtimezones` for other values"
+echo "Timezone: Set the timezone; see 'sudo systemsetup -listtimezones' for other values"
 systemsetup -settimezone "America/Los_Angeles" > /dev/null

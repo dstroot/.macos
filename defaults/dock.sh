@@ -20,11 +20,7 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-source "./dock_functions.sh"
-
-echo "###############################################################################"
-echo "# Dock                                                                        #"
-echo "###############################################################################"
+source "./functions/dock_functions.sh"
 
 echo "Dock: customizing dock application icons"
 # WARNING: permanently clears your existing dock

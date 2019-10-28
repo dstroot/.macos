@@ -142,9 +142,18 @@ applications=(
   "iTerm2"
 )
 
-for i in "${applications[@]}"; do
-  killall "${i}" > /dev/null 2>&1
-done
+# for i in "${applications[@]}"; do
+#   killall "${i}" > /dev/null 2>&1
+# done
+
+cecho "Ready to kill everything? (y/n)" $red
+read -r response
+case $response in
+  [yY])
+  for i in "${applications[@]}"; do
+    killall "${i}" > /dev/null 2>&1
+  done
+esac
 
 cecho "All Done!" $green
 cecho "Note: some of these changes require a logout/restart to take effect." $red
