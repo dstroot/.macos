@@ -20,11 +20,11 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-echo "Set language and text formats"
+echo "Language: Set language and text formats"
 defaults write NSGlobalDomain AppleLanguages -array "en"
 defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
 defaults write NSGlobalDomain AppleMetricUnits -bool false
 
-echo "Show language menu in the top right corner of the boot screen"
-sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
+# echo "Language: Show language menu in the top right corner of the boot screen"
+# sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
