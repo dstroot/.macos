@@ -110,7 +110,7 @@ for f in $FILES
 do
   echo ""
   cecho "===================================================" $white
-  cecho "==> Processing $(basename $f) configuration:" $blue
+  cecho "==> Processing $(basename $f) configuration:" $green
   cecho "===================================================" $white
   echo ""
   sh $f
@@ -118,7 +118,7 @@ done
 
 echo ""
 cecho "===================================================" $white
-cecho " Restart affected applications" $blue
+cecho " Restart affected applications" $green
 cecho "===================================================" $white
 echo ""
 
@@ -139,23 +139,23 @@ applications=(
   "Transmission"
   "Twitter"
   "iCal"
-  "iTerm2"
+  # "iTerm2"
 )
 
-# for i in "${applications[@]}"; do
-#   killall "${i}" > /dev/null 2>&1
-# done
+for i in "${applications[@]}"; do
+  killall "${i}" > /dev/null 2>&1
+done
 
-cecho "Ready to kill everything? (y/n)" $red
-read -r response
-case $response in
-  [yY])
-  for i in "${applications[@]}"; do
-    killall "${i}" > /dev/null 2>&1
-  done
-esac
+# cecho "Kill everything? (y/n)" $red
+# read -r response
+# case $response in
+#   [yY])
+#   for i in "${applications[@]}"; do
+#     killall "${i}" > /dev/null 2>&1
+#   done
+# esac
 
 cecho "All Done!" $green
-cecho "Note: some of these changes require a logout/restart to take effect." $red
+cecho "Note: some of these changes require a logout/restart to take effect." $green
 
 exit 0
