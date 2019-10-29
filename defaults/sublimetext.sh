@@ -20,5 +20,5 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-# echo "Setting Git to use Sublime Text as default editor"
+# echo "Sublime Text: Setting Git to use Sublime Text as default editor"
 # git config --global core.editor "subl -n -w"

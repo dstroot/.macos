@@ -20,21 +20,21 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-echo "Enable Dark mode"
+echo "Screen: Enable Dark mode"
 osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
 
-echo "Save screenshots to the desktop"
+echo "Screen: Save screenshots to the desktop"
 defaults write com.apple.screencapture location -string "${HOME}/Desktop"
 
-echo "Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)"
+echo "Screen: Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)"
 defaults write com.apple.screencapture type -string "png"
 
-echo "Disable shadow in screenshots"
+echo "Screen: Disable shadow in screenshots"
 defaults write com.apple.screencapture disable-shadow -bool true
 # 
-# Echo "Enable subpixel font rendering on non-Apple LCDs"
+# Echo "Screen: Enable subpixel font rendering on non-Apple LCDs"
 # # Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
 # defaults write NSGlobalDomain AppleFontSmoothing -int 1
 # 
-# Echo "Enable HiDPI display modes (requires restart)"
+# Echo "Screen: Enable HiDPI display modes (requires restart)"
 # sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true

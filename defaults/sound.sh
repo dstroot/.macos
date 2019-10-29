@@ -20,5 +20,5 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-# echo "Increase sound quality for Bluetooth headphones/headsets"
+# echo "Sound: Increase sound quality for Bluetooth headphones/headsets"
 # defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40

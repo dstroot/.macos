@@ -26,12 +26,12 @@
 echo "Finder: disable window animations and Get Info animations"
 defaults write com.apple.finder DisableAllAnimations -bool true
 
-# echo "Set Desktop as the default location for new Finder windows"
+# echo "Finder: Set Desktop as the default location for new Finder windows"
 # echo "For other paths, use PfLo and file:///full/path/here/"
 # defaults write com.apple.finder NewWindowTarget -string "PfDe"
 # defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
 
-# echo "Show icons for hard drives, servers, and removable media on the desktop"
+# echo "Finder: Show icons for hard drives, servers, and removable media on the desktop"
 # defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 # defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
 # defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
@@ -49,7 +49,7 @@ defaults write com.apple.finder ShowStatusBar -bool true
 echo "Finder: show path bar"
 defaults write com.apple.finder ShowPathbar -bool true
 
-# echo "Display full POSIX path as Finder window title"
+# echo "Finder: Display full POSIX path as Finder window title"
 # defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 echo "Finder: Keep folders on top when sorting by name"
@@ -71,22 +71,22 @@ echo "Finder: Avoid creating .DS_Store files on network or USB volumes"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# echo "Disable disk image verification"
+# echo "Finder: Disable disk image verification"
 # defaults write com.apple.frameworks.diskimages skip-verify -bool true
 # defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 # defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
-# echo "Automatically open a new Finder window when a volume is mounted"
+# echo "Finder: Automatically open a new Finder window when a volume is mounted"
 # defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
 # defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
 # defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
-# echo "Show item info near icons on the desktop and in other icon views"
+# echo "Finder: Show item info near icons on the desktop and in other icon views"
 # /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
 # /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
 # /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
 
-# echo "Show item info to the right of the icons on the desktop"
+# echo "Finder: Show item info to the right of the icons on the desktop"
 # /usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist
 
 echo "Finder: Enable snap-to-grid for icons on the desktop and in other icon views"
@@ -111,18 +111,18 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 echo "Finder: Disable the warning before emptying the Trash"
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-# echo "Show the ~/Library folder"
+# echo "Finder: Show the ~/Library folder"
 # chflags nohidden ~/Library
 
-# echo "Show the /Volumes folder"
+# echo "Finder: Show the /Volumes folder"
 # sudo chflags nohidden /Volumes
 
-# echo "Remove Dropbox’s green checkmark icons in Finder"
+# echo "Finder: Remove Dropbox’s green checkmark icons in Finder"
 # file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
 # [ -e "${file}" ] && mv -f "${file}" "${file}.bak"
 
-# echo "Expand the following File Info panes:"
-# echo "“General”, “Open with”, and “Sharing & Permissions”"
+# echo "Finder: Expand the following File Info panes:"
+# echo "Finder: “General”, “Open with”, and “Sharing & Permissions”"
 # defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # 	General -bool true \
 # 	OpenWith -bool true \

@@ -20,6 +20,6 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-# echo "Set mouse and scrolling speed"
+# echo "Mouse: Set mouse and scrolling speed"
 # defaults write NSGlobalDomain com.apple.mouse.scaling -int 3
 # defaults write NSGlobalDomain com.apple.scrollwheel.scaling -float 0.6875

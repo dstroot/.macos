@@ -20,34 +20,34 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-# echo "Use `~/Documents/Torrents` to store incomplete downloads"
+# echo "Transmission: Use `~/Documents/Torrents` to store incomplete downloads"
 # defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
 # defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Documents/Torrents"
 # 
-# echo "Use `~/Downloads` to store completed downloads"
+# echo "Transmission: Use `~/Downloads` to store completed downloads"
 # defaults write org.m0k.transmission DownloadLocationConstant -bool true
 # 
-# echo "Don’t prompt for confirmation before downloading"
+# echo "Transmission: Don’t prompt for confirmation before downloading"
 # defaults write org.m0k.transmission DownloadAsk -bool false
 # defaults write org.m0k.transmission MagnetOpenAsk -bool false
 # 
-# echo "Don’t prompt for confirmation before removing non-downloading active transfers"
+# echo "Transmission: Don’t prompt for confirmation before removing non-downloading active transfers"
 # defaults write org.m0k.transmission CheckRemoveDownloading -bool true
 # 
-# echo "Trash original torrent files"
+# echo "Transmission: Trash original torrent files"
 # defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
 # 
-# echo "Hide the donate message"
+# echo "Transmission: Hide the donate message"
 # defaults write org.m0k.transmission WarningDonate -bool false
 # 
-# echo "Hide the legal disclaimer"
+# echo "Transmission: Hide the legal disclaimer"
 # defaults write org.m0k.transmission WarningLegal -bool false
 # 
-# echo "IP block list."
-# echo "Source: https://giuliomac.wordpress.com/2014/02/19/best-blocklist-for-transmission/"
+# echo "Transmission: IP block list."
+# echo "Transmission: Source: https://giuliomac.wordpress.com/2014/02/19/best-blocklist-for-transmission/"
 # defaults write org.m0k.transmission BlocklistNew -bool true
 # defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz"
 # defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
 # 
-# echo "Randomize port on launch"
+# echo "Transmission: Randomize port on launch"
 # defaults write org.m0k.transmission RandomPort -bool true

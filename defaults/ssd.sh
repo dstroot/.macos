@@ -20,14 +20,14 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-# echo "Disable hibernation (speeds up entering sleep mode)"
+# echo "SSD: Disable hibernation (speeds up entering sleep mode)"
 # sudo pmset -a hibernatemode 0
 
-# echo "Remove the sleep image file to save disk space"
+# echo "SSD: Remove the sleep image file to save disk space"
 # sudo rm /private/var/vm/sleepimage
 
-# echo "Create a zero-byte file instead…"
+# echo "SSD: Create a zero-byte file instead…"
 # sudo touch /private/var/vm/sleepimage
 
-# echo "…and make sure it can’t be rewritten"
+# echo "SSD: …and make sure it can’t be rewritten"
 # sudo chflags uchg /private/var/vm/sleepimage

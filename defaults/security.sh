@@ -24,21 +24,21 @@
 # https://benchmarks.cisecurity.org/tools2/osx/CIS_Apple_OSX_10.11_Benchmark_v1.0.0.pdf
 # ------------------------------------------------------------------------------
 
-# echo "Check for software updates daily, not just once per week"
-# defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+echo "Security: Check for software updates daily, not just once per week"
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 # Require password immediately after sleep or screen saver begins
-echo "Require password imemdiately"
+echo "Security: Require password imemdiately"
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-echo "Turn on Firewall"
+echo "Security: Turn on Firewall"
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
 
-echo "Enable firewall logging"
+echo "Security: Enable firewall logging"
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setloggingmode on
 
-echo "Enable stealth mode"
+echo "Security: Enable stealth mode"
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
 
 # Do not automatically allow signed software to receive incoming connections
@@ -50,7 +50,7 @@ sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
 
 # Reload the firewall
 # (uncomment if above is not commented out)
-# echo "Reload the firewall"
+# echo "Security: Reload the firewall"
 # launchctl unload /System/Library/LaunchAgents/com.apple.alf.useragent.plist
 # sudo launchctl unload /System/Library/LaunchDaemons/com.apple.alf.agent.plist
 # sudo launchctl load /System/Library/LaunchDaemons/com.apple.alf.agent.plist
@@ -90,7 +90,7 @@ sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
 #sudo defaults write /Library/Preferences/com.apple.loginwindow RetriesUntilHint -int 0
 
 # Disable guest account login
-echo "Disable Guest Account"
+echo "Security: Disable Guest Account"
 sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
 
 # Automatically lock the login keychain for inactivity after 6 hours
@@ -127,7 +127,7 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -boo
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Disable Java
-echo "Disabling Java"
+echo "Security: Disabling Java"
 defaults write com.apple.Safari \
  com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled \
  -bool false
@@ -135,7 +135,7 @@ defaults write com.apple.Safari \
  com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles \
  -bool false
 
-echo "Always ask for password"
+echo "Security: Always ask for password"
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
@@ -143,14 +143,14 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 sudo launchctl load /System/Library/LaunchDaemons/com.apple.alf.agent.plist 2>/dev/null
 
-echo "Setup found information on Lock Screen"
+echo "Security: Setup found information on Lock Screen"
 if [ -n "$STRAP_GIT_NAME" ] && [ -n "$STRAP_GIT_EMAIL" ]; then
  sudo defaults write /Library/Preferences/com.apple.loginwindow \
    LoginwindowText \
    "Found this computer? Please contact $STRAP_GIT_NAME at $STRAP_GIT_EMAIL."
 fi
 
-# echo "Check and enable full-disk encryption"
+# echo "Security: Check and enable full-disk encryption"
 # if fdesetup status | grep $Q -E "FileVault is (On|Off, and will be enabled after the next restart)."; then
 #  logk
 # elif [ -n "$STRAP_CI" ]; then
