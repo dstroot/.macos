@@ -29,6 +29,7 @@ clear_dock
 # apps
 add_app_to_dock "Launchpad"
 add_app_to_dock "Google Chrome"
+add_app_to_dock "Firefox"
 add_app_to_dock "Safari"
 add_app_to_dock "Mail"
 add_app_to_dock "Contacts"
