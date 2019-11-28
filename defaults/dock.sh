@@ -40,8 +40,9 @@ add_app_to_dock "Maps"
 add_app_to_dock "Photos"
 add_app_to_dock "Messages"
 add_app_to_dock "FaceTime"
-# add_app_to_dock "Music"  # TODO Catalina "Music"
-# add_app_to_dock "TV"  # TODO Catalina
+add_app_to_dock "Music"  # TODO Catalina "Music"
+add_app_to_dock "TV"  # TODO Catalina
+add_app_to_dock "News"
 add_app_to_dock "Spotify"
 add_app_to_dock "App Store"
 add_app_to_dock "Visual Studio Code"
