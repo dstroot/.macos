@@ -23,18 +23,62 @@
 # https://github.com/rpavlick/add_to_dock
 # https://gist.github.com/kamui545/c810eccf6281b33a53e094484247f5e8
 
-function add_app_to_dock {
+function find_app_path() {
   app_name="${1}"
 
-  launchservices_path="/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister"
+  # places to look for an application
+  declare -a paths=(
+    "/System/Applications"
+    "/Applications"
+    "$HOME/Applications"
+  );
+  
+  # check the paths
+  for path in "${paths[@]}"; do
+    app=$(ls "${path}" | grep -o "${app_name}.app" | uniq | sort | head -n1)
+    if [[ -n "${app}" ]]; then
+        echo >&2 ${path}/${app}
+        return 0
+    fi
+  done
+}
 
-  app_path=$(${launchservices_path} -dump | grep -o "/.*${app_name}.app" | grep -v -E "Backups|Caches|TimeMachine|Temporary|Xcode.app|/Volumes/${app_name}" | uniq | sort | head -n1)
+function add_app_to_dock {
+  app_name="${1}"
+  app_path=""
+
+  # places to look for an application
+  declare -a paths=(
+    "/System/Applications"
+    "/Applications"
+    "$HOME/Applications"
+  );
+  
+  # check the paths
+  for path in "${paths[@]}"; do
+    app=$(ls "${path}" | grep -o "${app_name}.app" | uniq | sort | head -n1)
+    if [[ -n "${app}" ]]; then
+        app_path="${path}/${app}"
+    fi
+  done
 
   if open -Ra "${app_path}"; then
-      echo "$app_path added to the Dock."
-      defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>${app_path}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+        echo "Dock: $app_path added to the Dock."
+
+        defaults write com.apple.dock persistent-apps -array-add "<dict>
+            <key>tile-data</key>
+            <dict>
+                <key>file-data</key>
+                <dict>
+                    <key>_CFURLString</key>
+                    <string>${app_path}</string>
+                    <key>_CFURLStringType</key>
+                    <integer>0</integer>
+                </dict>
+            </dict>
+        </dict>"
   else
-      echo "ERROR: $1 not found." 1>&2
+      echo "ERROR: Application $1 not found." 1>&2
   fi
 }
 
