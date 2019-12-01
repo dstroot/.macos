@@ -23,46 +23,26 @@
 # https://github.com/rpavlick/add_to_dock
 # https://gist.github.com/kamui545/c810eccf6281b33a53e094484247f5e8
 
-function find_app_path() {
-  app_name="${1}"
-
-  # places to look for an application
-  declare -a paths=(
-    "/System/Applications"
-    "/Applications"
-    "$HOME/Applications"
-  );
-  
-  # check the paths
-  for path in "${paths[@]}"; do
-    app=$(ls "${path}" | grep -o "${app_name}.app" | uniq | sort | head -n1)
-    if [[ -n "${app}" ]]; then
-        echo >&2 ${path}/${app}
-        return 0
-    fi
-  done
-}
-
 function add_app_to_dock {
-  app_name="${1}"
-  app_path=""
+    app_name="${1}"
+    app_path=""
 
-  # places to look for an application
-  declare -a paths=(
+    # places to look for an application
+    declare -a paths=(
     "/System/Applications"
     "/Applications"
     "$HOME/Applications"
-  );
-  
-  # check the paths
-  for path in "${paths[@]}"; do
-    app=$(ls "${path}" | grep -o "${app_name}.app" | uniq | sort | head -n1)
-    if [[ -n "${app}" ]]; then
-        app_path="${path}/${app}"
-    fi
-  done
+    );
 
-  if open -Ra "${app_path}"; then
+    # check the paths for the app
+    for path in "${paths[@]}"; do
+        app=$(ls "${path}" | grep -o "${app_name}.app" | uniq | sort | head -n1)
+        if [[ -n "${app}" ]]; then
+            app_path="${path}/${app}"
+        fi
+    done
+
+    if open -Ra "${app_path}"; then
         echo "Dock: $app_path added to the Dock."
 
         defaults write com.apple.dock persistent-apps -array-add "<dict>
@@ -77,9 +57,9 @@ function add_app_to_dock {
                 </dict>
             </dict>
         </dict>"
-  else
-      echo "ERROR: Application $1 not found." 1>&2
-  fi
+    else
+        echo "ERROR: Application $1 not found." 1>&2
+    fi
 }
 
 # adds a folder to macOS Dock
@@ -100,6 +80,7 @@ function add_app_to_dock {
 #   1 -> Fan
 #   2 -> Grid
 #   3 -> List
+
 function add_folder_to_dock {
     folder="${1}"
     arrangement="1"
@@ -128,7 +109,8 @@ function add_folder_to_dock {
     done
 
     if [ -d "$folder" ]; then
-        echo "$folder added to the Dock."
+        echo "Dock: $folder added to the Dock."
+
         defaults write com.apple.dock persistent-others -array-add "<dict>
                 <key>tile-data</key>
                 <dict>
