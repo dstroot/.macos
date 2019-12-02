@@ -43,8 +43,6 @@ function add_app_to_dock {
     done
 
     if open -Ra "${app_path}"; then
-        echo "Dock: $app_path added to the Dock."
-
         defaults write com.apple.dock persistent-apps -array-add "<dict>
             <key>tile-data</key>
             <dict>
@@ -57,6 +55,8 @@ function add_app_to_dock {
                 </dict>
             </dict>
         </dict>"
+
+        echo "Dock: $app_path added to the Dock."
     else
         echo "ERROR: Application $1 not found." 1>&2
     fi
@@ -66,15 +66,18 @@ function add_app_to_dock {
 # usage: add_folder_to_dock "Folder Path" -a n -d n -v n
 # example: add_folder_to_dock "~/Downloads" -a 2 -d 0 -v 1
 # key:
+
 # -a or --arrangement
 #   1 -> Name
 #   2 -> Date Added
 #   3 -> Date Modified
 #   4 -> Date Created
 #   5 -> Kind
+
 # -d or --displayAs
 #   0 -> Stack
 #   1 -> Folder
+
 # -v or --showAs
 #   0 -> Automatic
 #   1 -> Fan
@@ -109,30 +112,30 @@ function add_folder_to_dock {
     done
 
     if [ -d "$folder" ]; then
-        echo "Dock: $folder added to the Dock."
-
         defaults write com.apple.dock persistent-others -array-add "<dict>
-                <key>tile-data</key>
+            <key>tile-data</key>
+            <dict>
+                <key>arrangement</key>
+                <integer>${arrangement}</integer>
+                <key>displayas</key>
+                <integer>${displayAs}</integer>
+                <key>file-data</key>
                 <dict>
-                    <key>arrangement</key>
-                    <integer>${arrangement}</integer>
-                    <key>displayas</key>
-                    <integer>${displayAs}</integer>
-                    <key>file-data</key>
-                    <dict>
-                        <key>_CFURLString</key>
-                        <string>file://${folder}</string>
-                        <key>_CFURLStringType</key>
-                        <integer>15</integer>
-                    </dict>
-                    <key>file-type</key>
-                    <integer>2</integer>
-                    <key>showas</key>
-                    <integer>${showAs}</integer>
+                    <key>_CFURLString</key>
+                    <string>file://${folder}</string>
+                    <key>_CFURLStringType</key>
+                    <integer>15</integer>
                 </dict>
-                <key>tile-type</key>
-                <string>directory-tile</string>
-            </dict>"
+                <key>file-type</key>
+                <integer>2</integer>
+                <key>showas</key>
+                <integer>${showAs}</integer>
+            </dict>
+            <key>tile-type</key>
+            <string>directory-tile</string>
+        </dict>"
+
+        echo "Dock: $folder added to the Dock."
     else
         echo "ERROR: Folder $folder not found."
     fi
