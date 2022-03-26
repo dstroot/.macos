@@ -53,5 +53,5 @@ defaults write com.apple.dock wvous-bl-corner -int 5
 defaults write com.apple.dock wvous-bl-modifier -int 0
 
 # Bottom right screen corner → Mission Control
-defaults write com.apple.dock wvous-br-corner -int 2
+defaults write com.apple.dock wvous-br-corner -int 0
 defaults write com.apple.dock wvous-br-modifier -int 0
