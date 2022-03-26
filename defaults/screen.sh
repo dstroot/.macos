@@ -20,8 +20,8 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-echo "Screen: Enable Dark mode"
-osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
+# echo "Screen: Enable Dark mode"
+# osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
 
 echo "Screen: Save screenshots to the desktop"
 defaults write com.apple.screencapture location -string "${HOME}/Desktop"
