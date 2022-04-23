@@ -22,8 +22,8 @@
 
 # Set computer name (as done via System Preferences → Sharing)
 USER_NAME="$USER"
-COMPUTER_SERIAL=`system_profiler SPHardwareDataType | grep "Serial Number (system):" | cut -d "":"" -f 2 | sed 's/^ *//g'`
-COMPUTER_MODEL=`system_profiler SPHardwareDataType | grep "Model Name:" | cut -d "":"" -f 2 | sed 's/^ *//g'`
+COMPUTER_SERIAL=`system_profiler SPHardwareDataType | grep "Serial Number (system):" | cut -d "":"" -f 2 | sed -r 's/ //g'`
+COMPUTER_MODEL=`system_profiler SPHardwareDataType | grep "Model Name:" | cut -d "":"" -f 2 | sed -r 's/ //g'`
 
 # Concatenate User, Model and Serial (descriptive and unique)
 COMPUTER_NAME="$USER_NAME"
