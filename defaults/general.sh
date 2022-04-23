@@ -89,3 +89,22 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 # echo "General: Set Help Viewer windows to non-floating mode"
 # defaults write com.apple.helpviewer DevMode -bool true
+
+# echo "General: Turn off font smoothing. (turn off on Retina)"
+# defaults write -g CGFontRenderingFontSmoothingDisabled -bool true
+# defaults write -g CGFontRenderingFontSmoothingDisabled -bool false
+
+
+# echo "Set font smoothing"
+
+# # Light font smoothing (1):
+# defaults -currentHost write -globalDomain AppleFontSmoothing -int 1
+
+# # Medium font smoothing (2):
+# defaults -currentHost write -globalDomain AppleFontSmoothing -int 2
+
+# # Heavy font smoothing (3):
+# defaults -currentHost write -globalDomain AppleFontSmoothing -int 3
+
+# # No font smoothing (0):
+# defaults -currentHost write -globalDomain AppleFontSmoothing -int 0
