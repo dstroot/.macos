@@ -38,3 +38,9 @@ defaults write com.apple.screencapture disable-shadow -bool true
 # 
 # Echo "Screen: Enable HiDPI display modes (requires restart)"
 # sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+
+echo "Screen: cmd+ctrl+click to drag window"
+defaults write -g NSWindowShouldDragOnGesture -bool true   
+
+# echo "Screen: disable cmd + ctrl + click to drag window."
+# defaults delete -g NSWindowShouldDragOnGesture  

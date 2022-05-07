@@ -56,9 +56,9 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 # echo "General: Set sidebar icon size to medium"
 # defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
-# echo "General: Always show scrollbars"
-# defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
-# # Possible values: `WhenScrolling`, `Automatic` and `Always`
+echo "General: Always show scrollbars"
+# Possible values: `WhenScrolling`, `Automatic` and `Always`
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
 # echo "General: Increase window resize speed for Cocoa applications"
 # defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
