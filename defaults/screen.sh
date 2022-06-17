@@ -44,3 +44,6 @@ defaults write -g NSWindowShouldDragOnGesture -bool true
 
 # echo "Screen: disable cmd + ctrl + click to drag window."
 # defaults delete -g NSWindowShouldDragOnGesture  
+
+
+
