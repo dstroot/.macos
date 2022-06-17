@@ -31,11 +31,11 @@ defaults write com.apple.screencapture type -string "png"
 
 echo "Screen: Disable shadow in screenshots"
 defaults write com.apple.screencapture disable-shadow -bool true
-# 
+
 # Echo "Screen: Enable subpixel font rendering on non-Apple LCDs"
 # # Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
 # defaults write NSGlobalDomain AppleFontSmoothing -int 1
-# 
+
 # Echo "Screen: Enable HiDPI display modes (requires restart)"
 # sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
@@ -44,6 +44,3 @@ defaults write -g NSWindowShouldDragOnGesture -bool true
 
 # echo "Screen: disable cmd + ctrl + click to drag window."
 # defaults delete -g NSWindowShouldDragOnGesture  
-
-
-
