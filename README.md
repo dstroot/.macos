@@ -51,6 +51,10 @@ Advantages:
 * Dropbox/iCloud/Google Drive syncs automatically so your dotfiles are **automatically and continously** backed up from that point forward.
 * Mackup understands applications and where they stash configuration data and **also** backs that up for you.  
 
-Resources:
+### Resources:
+
 https://gist.github.com/brandonb927/3195465
 https://github.com/mathiasbynens/dotfiles/blob/master/.osx
+https://macos-defaults.com
+https://www.shell-tips.com/mac/defaults/#gsc.tab=0
+

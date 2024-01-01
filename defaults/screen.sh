@@ -20,8 +20,9 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-# echo "Screen: Enable Dark mode"
-# osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
+###
+# Screenshots
+###
 
 echo "Screen: Save screenshots to the desktop"
 defaults write com.apple.screencapture location -string "${HOME}/Desktop"
@@ -32,6 +33,16 @@ defaults write com.apple.screencapture type -string "png"
 echo "Screen: Disable shadow in screenshots"
 defaults write com.apple.screencapture disable-shadow -bool true
 
+echo "Display the thumbnail after taking a screenshot"
+defaults write com.apple.screencapture "show-thumbnail" -bool true
+
+###
+# Screen
+###
+
+# echo "Screen: Enable Dark mode"
+# osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
+
 # Echo "Screen: Enable subpixel font rendering on non-Apple LCDs"
 # # Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
 # defaults write NSGlobalDomain AppleFontSmoothing -int 1
@@ -39,8 +50,8 @@ defaults write com.apple.screencapture disable-shadow -bool true
 # Echo "Screen: Enable HiDPI display modes (requires restart)"
 # sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
-echo "Screen: cmd+ctrl+click to drag window"
-defaults write -g NSWindowShouldDragOnGesture -bool true   
+# echo "Screen: cmd+ctrl+click to drag window"
+# defaults write -g NSWindowShouldDragOnGesture -bool true
 
 # echo "Screen: disable cmd + ctrl + click to drag window."
 # defaults delete -g NSWindowShouldDragOnGesture  
