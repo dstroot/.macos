@@ -20,5 +20,5 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-echo "Quicktime: Auto-play videos when opened with QuickTime Player"
-defaults write com.apple.QuickTimePlayerX MGPlayMovieOnOpen -bool true
+# echo "Quicktime: Auto-play videos when opened with QuickTime Player"
+# defaults write com.apple.QuickTimePlayerX MGPlayMovieOnOpen -bool true
