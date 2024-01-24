@@ -139,7 +139,6 @@ applications=(
   "Transmission"
   "Twitter"
   "iCal"
-  # "iTerm2"
 )
 
 for i in "${applications[@]}"; do

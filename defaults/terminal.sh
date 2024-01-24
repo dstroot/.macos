@@ -20,8 +20,8 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-echo "Terminal: Only use UTF-8 in Terminal.app"
-defaults write com.apple.terminal StringEncodings -array 4
+# echo "Terminal: Only use UTF-8 in Terminal.app"
+# defaults write com.apple.terminal StringEncodings -array 4
 
 # -------------------------------------------
 # Notes:

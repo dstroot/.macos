@@ -28,12 +28,12 @@
 # # plist
 # plist_file="/Library/Preferences/com.apple.SoftwareUpdate.plist"
 
-# # Enable the following:
-# #   Automatic background check for macOS software updates
-# #   Automatic download of macOS software updates
-# #   Automatic download and installation of XProtect, MRT and Gatekeeper updates
-# #   Automatic download and installation of automatic security updates
-# #   App updates from the App Store
+# Enable the following:
+#   Automatic background check for macOS software updates
+#   Automatic download of macOS software updates
+#   Automatic download and installation of XProtect, MRT and Gatekeeper updates
+#   Automatic download and installation of automatic security updates
+#   App updates from the App Store
 
 # /usr/bin/defaults write "$plist_file" AutomaticCheckEnabled -bool true
 # /usr/bin/defaults write "$plist_file" AutomaticDownload -bool true

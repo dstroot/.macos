@@ -15,19 +15,20 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           ssd.sh
-# PURPOSE:        Setup SSD tweaks
+# NAME:           com.apple.screencapture.sh
+# PURPOSE:        Setup screencapture settings
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-# echo "SSD: Disable hibernation (speeds up entering sleep mode)"
-# sudo pmset -a hibernatemode 0
+echo "Screen: Save screenshots to /Pictures/Screenshots"
+defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screenshots"
 
-# echo "SSD: Remove the sleep image file to save disk space"
-# sudo rm /private/var/vm/sleepimage
+echo "Screen: Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)"
+defaults write com.apple.screencapture type -string "png"
 
-# echo "SSD: Create a zero-byte file instead…"
-# sudo touch /private/var/vm/sleepimage
+echo "Screen: Disable shadow in screenshots"
+defaults write com.apple.screencapture disable-shadow -bool true
 
-# echo "SSD: …and make sure it can’t be rewritten"
-# sudo chflags uchg /private/var/vm/sleepimage
+echo "Display the thumbnail after taking a screenshot"
+defaults write com.apple.screencapture "show-thumbnail" -bool false
+

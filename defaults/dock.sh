@@ -57,7 +57,12 @@ add_app_to_dock "Microsoft PowerPoint"
 add_app_to_dock "Microsoft Outlook"
 
 # folders
+# Dowloads
 add_folder_to_dock "${HOME}/Downloads" -a 2 -d 0 -v 1
+
+# Screenshots
+mkdir -p ${HOME}/Pictures/Screenshots
+add_folder_to_dock "${HOME}/Pictures/Screenshots" -a 1 -d 0 -v 1
 
 # echo "Dock: Enable highlight hover effect for the grid view of a stack (Dock)"
 # defaults write com.apple.dock mouse-over-hilite-stack -bool true
