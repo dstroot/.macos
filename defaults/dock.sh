@@ -28,36 +28,45 @@ clear_dock
 
 # apps
 add_app_to_dock "Launchpad"
+
 add_app_to_dock "Google Chrome"
-add_app_to_dock "Firefox"
+# add_app_to_dock "Firefox"
 add_app_to_dock "Safari"
+
 add_app_to_dock "Mail"
-add_app_to_dock "Contacts"
-add_app_to_dock "Calendar"
-add_app_to_dock "Notes"
-add_app_to_dock "Reminders"
+add_app_to_dock "HEY"
+
 add_app_to_dock "Maps"
 add_app_to_dock "Photos"
 add_app_to_dock "Messages"
 add_app_to_dock "FaceTime"
+
+add_app_to_dock "Contacts"
+add_app_to_dock "Calendar"
+add_app_to_dock "Notes"
+add_app_to_dock "Reminders"
+
+add_app_to_dock "Audio MIDI Setup"
 add_app_to_dock "Music"  # TODO Catalina "Music"
+# add_app_to_dock "Spotify"
 add_app_to_dock "TV"  # TODO Catalina
 add_app_to_dock "News"
-add_app_to_dock "Spotify"
+add_app_to_dock "Stocks"
+
 add_app_to_dock "App Store"
+add_app_to_dock "Windows App"
 add_app_to_dock "Visual Studio Code"
-add_app_to_dock "System Preferences"
+add_app_to_dock "System Settings"
 add_app_to_dock "iTerm"
-add_app_to_dock "Insomnia"
-add_app_to_dock "Kitematic"
-add_app_to_dock "Microsoft Remote Desktop"
+
 add_app_to_dock "Microsoft Word"
 add_app_to_dock "Microsoft Excel"
 add_app_to_dock "Microsoft PowerPoint"
-add_app_to_dock "Microsoft Outlook"
+
+add_app_to_dock "Obsidian"
 
 # folders
-# Dowloads
+# Downloads
 add_folder_to_dock "${HOME}/Downloads" -a 2 -d 0 -v 1
 
 # Screenshots
@@ -111,3 +120,11 @@ defaults write com.apple.dock autohide -bool true
 
 echo "Dock: Don’t show recent applications in Dock"
 defaults write com.apple.dock show-recents -bool false
+
+echo "Click wallpaper to reveal deskop only in stage manager"
+defaults write "com.apple.WindowManager" "EnableStandardClickToShowDesktop" '0'
+
+echo "Make launchpad icons smaller"
+defaults write com.apple.dock springboard-columns -int 13
+defaults write com.apple.dock springboard-rows -int 8
+defaults write com.apple.dock ResetLaunchPad -bool TRUE; killall Dock

@@ -26,6 +26,24 @@ defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 
+
+
+
+# echo "Enable tap to click"
+# defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" "Clicking" '1'
+# defaults write "com.apple.AppleMultitouchTrackpad" "Clicking" '1'
+
+# echo "Enable secondary click with two fingers"
+# defaults write "com.apple.AppleMultitouchTrackpad" "TrackpadRightClick" '1'
+# defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" "TrackpadRightClick" '1'
+
+# echo "Set tracking speed"
+# defaults write "Apple Global Domain" "com.apple.trackpad.scaling" '"0.875"'
+
+# echo "Enable three-finger swipe"
+# defaults write "com.apple.AppleMultitouchTrackpad" "TrackpadThreeFingerHorizSwipeGesture" '2'
+# defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" "TrackpadThreeFingerHorizSwipeGesture" '2'
+
 # execute "defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true && \
 #          defaults write com.apple.AppleMultitouchTrackpad Clicking -int 1 && \
 #          defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1 && \
