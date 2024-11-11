@@ -15,8 +15,8 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           dock.sh
-# PURPOSE:        Setup dock
+# NAME:           system.6.dock.sh
+# PURPOSE:        System Settings Dock
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
@@ -90,23 +90,11 @@ defaults write com.apple.dock mineffect -string "scale"
 echo "Dock: Minimize windows into their application’s icon"
 defaults write com.apple.dock minimize-to-application -bool true
 
-# echo "Dock: Enable spring loading for all Dock items"
-# defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
-
 echo "Dock: Show indicator lights for open applications in the Dock"
 defaults write com.apple.dock show-process-indicators -bool true
 
 echo "Dock: Don’t animate opening applications from the Dock"
 defaults write com.apple.dock launchanim -bool false
-
-# echo "Dock: Disable Dashboard"
-# defaults write com.apple.dashboard mcx-disabled -bool true
-
-# echo "Dock: Don’t show Dashboard as a Space"
-# defaults write com.apple.dock dashboard-in-overlay -bool true
-
-# echo "Dock: Don’t automatically rearrange Spaces based on most recent use"
-# defaults write com.apple.dock mru-spaces -bool false
 
 echo "Dock: Remove the auto-hiding Dock delay"
 defaults write com.apple.dock autohide-delay -float 0
@@ -117,8 +105,6 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 echo "Dock: Automatically hide and show the Dock"
 defaults write com.apple.dock autohide -bool true
 
-# echo "Dock: Make Dock icons of hidden applications translucent"
-# defaults write com.apple.dock showhidden -bool true
 
 echo "Dock: Don’t show recent applications in Dock"
 defaults write com.apple.dock show-recents -bool false
@@ -134,8 +120,5 @@ defaults write com.apple.dock springboard-rows -int 9
 # defaults delete com.apple.dock springboard-rows
 # defaults delete com.apple.dock springboard-columns
 # defaults write com.apple.dock ResetLaunchPad -bool true
-
-# osascript -e 'tell application "Dock" to quit'
-# osascript -e 'tell application "Dock" to activate'
 
 killall Dock > /dev/null 2>&1

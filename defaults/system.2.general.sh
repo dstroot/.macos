@@ -15,12 +15,17 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           acessibility.sh
-# PURPOSE:        Setup trackpad
+# NAME:           system.2.general.sh
+# PURPOSE:        System Settings General
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-# You also have to go into Accessibility and check off these two things (it's night and day with dragging and making the trackpad super awesome). Check Enable Dragging "without drag lock" and also choose Scrolling "with inertia" under Accessibility. These things make a world of difference and I'm not sure why they are buried in Accessibility. It makes dragging windows effortlessly and pleasant. I can't stand it any other way.
 
-# The three-finger drag option is hidden in System Preferences > Accessibility. Click the Trackpad Options button at the bottom of the Accessibility window on Pointer Control. In the pop-up window, check the box for Enable dragging and choose three finger drag from the pull-down menu.
 
+# Software Update:Updates click "i with circle" ⌽ and turn everything on.
+
+# Login Items & Extensions:
+# 	Review "Open at Login", "Allow in Background", and "Extensions"
+# 	Extensions: Click "i with circle" ⌽ for "sharing" and adjust
+
+# Sharing: Check that everything is off

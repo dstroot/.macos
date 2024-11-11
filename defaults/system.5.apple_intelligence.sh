@@ -15,30 +15,9 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           terminal.sh
-# PURPOSE:        Setup terminal
+# NAME:           system.5.apple_intelligence.sh
+# PURPOSE:        System Settings Apple Intelligence & Siri
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-# echo "Terminal: Only use UTF-8 in Terminal.app"
-# defaults write com.apple.terminal StringEncodings -array 4
-
-# -------------------------------------------
-# Notes:
-# Keep terminal color files in ${HOME}/.dotfiles/init
-# load them here:
-# -------------------------------------------
-
-# cecho "Use a modified version of the Solarized Dark theme by default in Terminal.app" $yellow
-# TERM_PROFILE='Solarized Dark xterm-256color';
-# CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')";
-# if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
-#   open "${HOME}/init/${TERM_PROFILE}.terminal";
-#   sleep 1; echo ""
-#   cecho "Wait a bit to make sure the theme is loaded" $yellow
-#   defaults write com.apple.terminal 'Default Window Settings' -string "${TERM_PROFILE}";
-#   defaults write com.apple.terminal 'Startup Window Settings' -string "${TERM_PROFILE}";
-# fi;
-#
-# cecho "Install the Solarized Dark theme for iTerm" $yellow
-# open "${HOME}/init/Solarized Dark.itermcolors"
+# Listen for: **Off**

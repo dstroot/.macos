@@ -15,8 +15,8 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           spotlight.sh
-# PURPOSE:        Setup Spotlight
+# NAME:           system.8.spotlight.sh
+# PURPOSE:        System Settings Spotlight
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
@@ -57,3 +57,32 @@
 
 # echo "Spotlight: Rebuild the index from scratch"
 # sudo mdutil -E / > /dev/null
+
+echo "Disable Help Apple Improve Search"
+defaults write "com.apple.assistant.support" "Search Queries Data Sharing Status" '2'
+
+
+# # Sequoia 
+# defaults write "com.apple.Spotlight" "orderedItems" '( \
+# 	{enabled=1;name=APPLICATIONS;}, \
+# 	{enabled=0;name="MENU_EXPRESSION";}, \
+# 	{enabled=0;name=CONTACT;}, \
+# 	{enabled=0;name="MENU_CONVERSION";}, \
+# 	{enabled=0;name="MENU_DEFINITION";}, \
+# 	{enabled=1;name=DOCUMENTS;}, \
+# 	{enabled=0;name="EVENT_TODO";}, \
+# 	{enabled=1;name=DIRECTORIES;}, \
+# 	{enabled=0;name=FONTS;}, \
+# 	{enabled=0;name=IMAGES;}, \
+# 	{enabled=0;name=MESSAGES;}, \
+# 	{enabled=0;name=MOVIES;}, \
+# 	{enabled=0;name=MUSIC;}, \
+# 	{enabled=0;name="MENU_OTHER";}, \
+# 	{enabled=1;name=PDF;}, \
+# 	{enabled=0;name=PRESENTATIONS;}, \
+# 	{enabled=0;name="MENU_SPOTLIGHT_SUGGESTIONS";}, \
+# 	{enabled=1;name=SPREADSHEETS;}, \
+# 	{enabled=0;name="SYSTEM_PREFS";}, \
+# 	{enabled=0;name=TIPS;},{ \
+# 	enabled=0;name=BOOKMARKS;}, \
+# )'

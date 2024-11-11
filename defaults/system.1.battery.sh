@@ -15,13 +15,10 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           network.sh
-# PURPOSE:        Set network parameters
+# NAME:           system.1.battery.sh
+# PURPOSE:        System Settings Battery/Energy
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-# To prevent creating .DS_Store files on network shares, as well as ignore existing .DS_Stores:
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-
-# To remove this policy and restore the default behavior, enter
-# defaults delete com.apple.desktopservices DSDontWriteNetworkStores
+# Options:**Disable** Slightly dim the display on battery
+# **Disable** Power Nap
