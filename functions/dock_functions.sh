@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 # ------------------------------------------------------------------------------
 # Copyright (c) 2014 Dan Stroot
 # All rights reserved.
@@ -29,9 +29,11 @@ function add_app_to_dock {
 
     # places to look for an application
     declare -a paths=(
-    "/System/Applications"
+    "/System/Cryptexes/App/System/Applications/"
     "/Applications"
     "$HOME/Applications"
+    "/System/Applications"
+    "/System/Applications/Utilities"
     );
 
     # check the paths for the app

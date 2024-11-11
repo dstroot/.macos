@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 # ------------------------------------------------------------------------------
 # Copyright (c) 2014 Dan Stroot
 # All rights reserved.
@@ -20,13 +20,14 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-source "./functions/dock_functions.sh"
+source "../functions/dock_functions.sh"
 
 echo "Dock: customizing dock application icons"
 # WARNING: permanently clears your existing dock
 clear_dock
 
 # apps
+add_app_to_dock "System Settings"
 add_app_to_dock "Launchpad"
 
 add_app_to_dock "Google Chrome"
@@ -36,7 +37,7 @@ add_app_to_dock "Safari"
 add_app_to_dock "Mail"
 add_app_to_dock "HEY"
 
-add_app_to_dock "Maps"
+# add_app_to_dock "Maps"
 add_app_to_dock "Photos"
 add_app_to_dock "Messages"
 add_app_to_dock "FaceTime"
@@ -46,17 +47,17 @@ add_app_to_dock "Calendar"
 add_app_to_dock "Notes"
 add_app_to_dock "Reminders"
 
-add_app_to_dock "Audio MIDI Setup"
+# add_app_to_dock "TV"  # TODO Catalina
 add_app_to_dock "Music"  # TODO Catalina "Music"
+add_app_to_dock "Audio MIDI Setup"
+
 # add_app_to_dock "Spotify"
-add_app_to_dock "TV"  # TODO Catalina
 add_app_to_dock "News"
 add_app_to_dock "Stocks"
 
-add_app_to_dock "App Store"
+# add_app_to_dock "App Store"
 add_app_to_dock "Windows App"
 add_app_to_dock "Visual Studio Code"
-add_app_to_dock "System Settings"
 add_app_to_dock "iTerm"
 
 add_app_to_dock "Microsoft Word"
@@ -66,12 +67,13 @@ add_app_to_dock "Microsoft PowerPoint"
 add_app_to_dock "Obsidian"
 
 # folders
-# Downloads
-add_folder_to_dock "${HOME}/Downloads" -a 2 -d 0 -v 1
 
 # Screenshots
 mkdir -p ${HOME}/Pictures/Screenshots
 add_folder_to_dock "${HOME}/Pictures/Screenshots" -a 1 -d 0 -v 1
+
+# Downloads
+add_folder_to_dock "${HOME}/Downloads" -a 2 -d 0 -v 1
 
 # echo "Dock: Enable highlight hover effect for the grid view of a stack (Dock)"
 # defaults write com.apple.dock mouse-over-hilite-stack -bool true
@@ -125,6 +127,15 @@ echo "Click wallpaper to reveal deskop only in stage manager"
 defaults write "com.apple.WindowManager" "EnableStandardClickToShowDesktop" '0'
 
 echo "Make launchpad icons smaller"
-defaults write com.apple.dock springboard-columns -int 13
-defaults write com.apple.dock springboard-rows -int 8
-defaults write com.apple.dock ResetLaunchPad -bool TRUE; killall Dock
+defaults write com.apple.dock springboard-columns -int 14
+defaults write com.apple.dock springboard-rows -int 9
+
+# echo "Reset Launchpad to defaults"
+# defaults delete com.apple.dock springboard-rows
+# defaults delete com.apple.dock springboard-columns
+# defaults write com.apple.dock ResetLaunchPad -bool true
+
+# osascript -e 'tell application "Dock" to quit'
+# osascript -e 'tell application "Dock" to activate'
+
+killall Dock > /dev/null 2>&1
