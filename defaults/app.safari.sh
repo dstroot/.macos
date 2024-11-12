@@ -15,7 +15,7 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           safari.sh
+# NAME:           app.safari.sh
 # PURPOSE:        Setup Safari
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
@@ -31,8 +31,8 @@ defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 # echo "Safari: Show the full URL in the address bar (note: this still hides the scheme)"
 # defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 
-echo "Safari: Set Safari’s home page to ‘about:blank’ for faster loading"
-defaults write com.apple.Safari HomePage -string "about:blank"
+# echo "Safari: Set Safari’s home page to ‘about:blank’ for faster loading"
+# defaults write com.apple.Safari HomePage -string "about:blank"
 
 echo "Safari: Prevent Safari from opening ‘safe’ files automatically after downloading"
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
