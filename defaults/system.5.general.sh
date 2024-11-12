@@ -15,10 +15,23 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           name.sh
-# PURPOSE:        Set computer name
+# NAME:           system.2.general.sh
+# PURPOSE:        System Settings General
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
+
+
+
+# Software Update:Updates click "i with circle" ⌽ and turn everything on.
+
+# Login Items & Extensions:
+# 	Review "Open at Login", "Allow in Background", and "Extensions"
+# 	Extensions: Click "i with circle" ⌽ for "sharing" and adjust
+
+# Sharing: Check that everything is off
+
+echo "Timezone: Set the timezone; see 'sudo systemsetup -listtimezones' for other values"
+systemsetup -settimezone "America/Los_Angeles" > /dev/null
 
 # Set computer name (as done via System Preferences → Sharing)
 USER_NAME="$USER"

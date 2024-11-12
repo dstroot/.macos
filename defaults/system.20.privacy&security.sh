@@ -143,12 +143,7 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 sudo launchctl load /System/Library/LaunchDaemons/com.apple.alf.agent.plist 2>/dev/null
 
-echo "Security: Setup found information on Lock Screen"
-if [ -n "$STRAP_GIT_NAME" ] && [ -n "$STRAP_GIT_EMAIL" ]; then
- sudo defaults write /Library/Preferences/com.apple.loginwindow \
-   LoginwindowText \
-   "Found this computer? Please contact $STRAP_GIT_NAME at $STRAP_GIT_EMAIL."
-fi
+
 
 # echo "Security: Check and enable full-disk encryption"
 # if fdesetup status | grep $Q -E "FileVault is (On|Off, and will be enabled after the next restart)."; then

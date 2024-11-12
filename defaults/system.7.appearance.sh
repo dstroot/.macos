@@ -15,9 +15,16 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           system.7.displays.sh
-# PURPOSE:        System Settings Displays
+# NAME:           system.4.appearance.sh
+# PURPOSE:        System Settings Appearance
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
 
+echo "Appearance is set to auto"
+# defaults delete "Apple Global Domain" "AppleInterfaceStyle"
+defaults write "Apple Global Domain" "AppleInterfaceStyleSwitchesAutomatically" '1'
+
+echo "General: Always show scrollbars"
+# Possible values: `WhenScrolling`, `Automatic` and `Always`
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always"

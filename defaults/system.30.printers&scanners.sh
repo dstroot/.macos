@@ -15,20 +15,10 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           system.2.general.sh
-# PURPOSE:        System Settings General
+# NAME:           mouse.sh
+# PURPOSE:        Setup mouse
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-
-
-# Software Update:Updates click "i with circle" ⌽ and turn everything on.
-
-# Login Items & Extensions:
-# 	Review "Open at Login", "Allow in Background", and "Extensions"
-# 	Extensions: Click "i with circle" ⌽ for "sharing" and adjust
-
-# Sharing: Check that everything is off
-
-echo "Timezone: Set the timezone; see 'sudo systemsetup -listtimezones' for other values"
-systemsetup -settimezone "America/Los_Angeles" > /dev/null
+echo "General: Automatically quit printer app once the print jobs is complete"
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true

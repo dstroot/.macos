@@ -15,16 +15,14 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           language.sh
-# PURPOSE:        Setup language
+# NAME:           system.7.displays.sh
+# PURPOSE:        System Settings Displays
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-echo "Language: Set language and text formats"
-defaults write NSGlobalDomain AppleLanguages -array "en"
-defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
-defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
-defaults write NSGlobalDomain AppleMetricUnits -bool false
-
-# echo "Language: Show language menu in the top right corner of the boot screen"
-# sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
+echo "Security: Setup found information on Lock Screen"
+if [ -n "$STRAP_GIT_NAME" ] && [ -n "$STRAP_GIT_EMAIL" ]; then
+ sudo defaults write /Library/Preferences/com.apple.loginwindow \
+   LoginwindowText \
+   "Found this computer? Please contact $STRAP_GIT_NAME at $STRAP_GIT_EMAIL."
+fi
