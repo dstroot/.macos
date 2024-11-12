@@ -117,10 +117,6 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 # echo "Finder: Show the /Volumes folder"
 # sudo chflags nohidden /Volumes
 
-# echo "Finder: Remove Dropbox’s green checkmark icons in Finder"
-# file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
-# [ -e "${file}" ] && mv -f "${file}" "${file}.bak"
-
 # echo "Finder: Expand the following File Info panes:"
 # echo "Finder: “General”, “Open with”, and “Sharing & Permissions”"
 # defaults write com.apple.finder FXInfoPanesExpanded -dict \

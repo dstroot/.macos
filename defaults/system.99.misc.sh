@@ -15,10 +15,13 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           timezone.sh
-# PURPOSE:        Setup timezone
+# NAME:           system.99.misc.sh
+# PURPOSE:        Set misc parameters
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-echo "Timezone: Set the timezone; see 'sudo systemsetup -listtimezones' for other values"
-systemsetup -settimezone "America/Los_Angeles" > /dev/null
+# To prevent creating .DS_Store files on network shares, as well as ignore existing .DS_Stores:
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# To remove this policy and restore the default behavior, enter
+# defaults delete com.apple.desktopservices DSDontWriteNetworkStores

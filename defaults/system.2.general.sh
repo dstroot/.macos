@@ -29,3 +29,6 @@
 # 	Extensions: Click "i with circle" ⌽ for "sharing" and adjust
 
 # Sharing: Check that everything is off
+
+echo "Timezone: Set the timezone; see 'sudo systemsetup -listtimezones' for other values"
+systemsetup -settimezone "America/Los_Angeles" > /dev/null
