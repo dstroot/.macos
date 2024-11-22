@@ -20,8 +20,6 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-
-
 # Software Update:Updates click "i with circle" ⌽ and turn everything on.
 
 # Login Items & Extensions:
