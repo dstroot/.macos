@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # ------------------------------------------------------------------------------
 # Copyright (c) 2014 Dan Stroot
 # All rights reserved.
@@ -16,17 +16,8 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
 
-info() {
-    local TEXT=$1
-    local PRINT="$(gum format -- "$TEXT")"
-    gum log --level info "$PRINT"
-}
-
-warn() {
-    local TEXT=$1
-    local PRINT="$(gum format -- "$TEXT")"
-    gum log --level warn "$PRINT"
-}
+# shellcheck source="./functions/logging.sh"
+source "./functions/logging.sh"
 
 info "**Enable** reduce motion"
 /usr/libexec/PlistBuddy -c "Delete ':reduceMotion'" -c "Add ':reduceMotion' bool 'true'" "$HOME/Library/Preferences/com.apple.universalaccess.plist"

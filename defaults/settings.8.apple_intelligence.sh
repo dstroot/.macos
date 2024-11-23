@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # ------------------------------------------------------------------------------
 # Copyright (c) 2014 Dan Stroot
 # All rights reserved.
@@ -16,17 +16,8 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
 
-info() {
-    local TEXT=$1
-    local PRINT="$(gum format -- "$TEXT")"
-    gum log --level info "$PRINT"
-}
-
-warn() {
-    local TEXT=$1
-    local PRINT="$(gum format -- "$TEXT")"
-    gum log --level warn "$PRINT"
-}
+# shellcheck source="./functions/logging.sh"
+source "./functions/logging.sh"
 
 info "Listen for: **Off**"
 /usr/libexec/PlistBuddy -c "Delete ':VoiceTrigger Enabled'" -c "Add ':VoiceTrigger Enabled' bool 'false'" "$HOME/Library/Preferences/com.apple.voicetrigger.plist"

@@ -14,118 +14,96 @@
 # IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
-# ------------------------------------------------------------------------------
-
-FOREGROUND="#7aa2f7"  
-BORDER="#ff87d7"    
-TITLE="#ffffff"
-
-
-info() {
-    local TEXT=$1
-    local ITEM1=$2
-    local ITEM2=$3
-    local ITEM3=$4
-    local ITEM4=$5
-
-    gum log --structured --level info "$TEXT" "$ITEM1" "$ITEM2" "$ITEM3" "$ITEM4"
-}
-
-warn() {
-    local TEXT=$1
-    gum log --level warn "$TEXT"
-}
-
-error() {
-    local TEXT=$1
-    gum log --level error "$TEXT"
-    exit 1;
-}
+# ------------------------------------------------------------------------------ 
 
 announce_step() {
   local TEXT=$1
   gum style --foreground "$FOREGROUND" --border-foreground "$BORDER" --border double --align left --width 70 --margin "1 0" --padding "0 2" "$TEXT"
 }
 
-# declare -a FILES=()
+close_settings() {
+  # Close any open System Preferences panes, to prevent them
+  # from overriding settings we’re about to change
+  osascript -e 'tell application "System Preferences" to quit'
+}
 
-# # where we keep our defaults
-# read -a FILES <<< "${HOME}"/.macos/defaults/*
+process_settings() {
+  announce_step "Processing settings files"
+  search_dir="${HOME}"/.macos/defaults
 
-# # Close any open System Preferences panes, to prevent them from
-# # overriding settings we’re about to change
-# # osascript -e 'tell application "System Preferences" to quit'
+  for entry in "$search_dir"/settings.*.*.sh; do
+    announce_step "Processing: $(basename "$entry")"
 
+    if [ "$DEBUG" == "Yes" ]; then
+      shellcheck -x "$entry"
+    else
+      bash "$entry"
+    fi
+  done
+}
 
-# # If these files are readable, source them
-# for index in "${!FILES[@]}"
-# do
-#   if [ -r "${FILES[$index]}" ]; then
-#     echo "$index"
-#     printf "Processing %s" '$(basename "${FILES[$index]}")'
-#   fi
-# done
+kill_with_fire() {
+  announce_step "Killing applications..."
 
-# unset FILES
+  applications=(
+    # "Activity Monitor"
+    # "Address Book"
+    "Calendar"
+    "Contacts"
+    "cfprefsd"
+    "Dock"
+    "Finder"
+    "Mail"
+    "Messages"
+    "Safari"
+    "SizeUp"
+    "SystemUIServer"
+    "Terminal"
+    "Transmission"
+    "iCal"
+  )
 
-search_dir="${HOME}"/.macos/defaults
-for entry in "$search_dir"/settings.*.*.sh
-do
-  announce_step "Processing: $(basename "$entry")"
-  bash "$entry"
-done
+  for i in "${applications[@]}"; do
+    if [ "$DEBUG" != "Yes" ]; then
+      killall "${i}" > /dev/null 2>&1
+    else
+      echo "Mock killing ${i}"
+    fi
+  done
 
+}
 
+ask_debug () {
+    announce_step "Would you like to turn debug on?" 
 
-# for f in $FILES
-# do
-#   # echo ""
-#   # cecho "===================================================" $white
-#   # cecho "==> Processing $(basename $f) configuration:" $green
-#   # cecho "===================================================" $white
-#   # echo ""
-#   printf "Processing %s, $(basename $f)"
-#   # sh $f
-# done
+    DEBUG=$(gum choose --header.foreground="$BORDER" --selected.foreground="$FOREGROUND" --cursor.foreground="$FOREGROUND" "No" "Yes")
+}
 
-# echo ""
-# cecho "===================================================" $white
-# cecho " Restart affected applications" $green
-# cecho "===================================================" $white
-# echo ""
+####
+# Main script starts here
+####
+ 
+main() {
+  # Set Variables
+  FOREGROUND="#7aa2f7"  
+  BORDER="#ff87d7"
+  DEBUG=""    
 
-# applications=(
-#   "Activity Monitor"
-#   "Address Book"
-#   "Calendar"
-#   "Contacts"
-#   "cfprefsd"
-#   "Dock"
-#   "Finder"
-#   "Mail"
-#   "Messages"
-#   "Safari"
-#   "SizeUp"
-#   "SystemUIServer"
-#   "Terminal"
-#   "Transmission"
-#   "iCal"
-# )
+  # Housekeeping
+  close_settings
+  
+  # Debugging
+  ask_debug
 
-# for i in "${applications[@]}"; do
-#   killall "${i}" > /dev/null 2>&1
-# done
+  # Steps
+  process_settings
+  kill_with_fire
+  
+  # Finished
+  announce_step "All Done!" 
+  echo "Note: some of these changes require a logout/restart to take effect."
+  exit 0
+}
+ 
+main 
 
-# cecho "Kill everything? (y/n)" $red
-# read -r response
-# case $response in
-#   [yY])
-#   for i in "${applications[@]}"; do
-#     killall "${i}" > /dev/null 2>&1
-#   done
-# esac
-
-# cecho "All Done!" $green
-# cecho "Note: some of these changes require a logout/restart to take effect." $green
-
-exit 0

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # ------------------------------------------------------------------------------
 # Copyright (c) 2014 Dan Stroot
 # All rights reserved.
@@ -20,17 +20,8 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
-info() {
-    local TEXT=$1
-    local PRINT="$(gum format -- "$TEXT")"
-    gum log --level info "$PRINT"
-}
-
-warn() {
-    local TEXT=$1
-    local PRINT="$(gum format -- "$TEXT")"
-    gum log --level warn "$PRINT"
-}
+# shellcheck source="./functions/logging.sh"
+source "../functions/logging.sh"
 
 warn "**No Changes**"
 

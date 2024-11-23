@@ -16,10 +16,20 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
 
-# shellcheck source="./functions/logging.sh"
-source "./functions/logging.sh"
+info() {
+  # if we have more than one parameter use structured logging
+  if [ $# -gt 1 ]; then
+    gum log --structured --level info "$@"
+  else
+    gum log --level info "$@"
+  fi 
+}
 
-warn "**No Changes**"
-
-# **Disable** Automatically adjust brightness
-# Night Shift:Schedule: **Sunset to Sunrise**
+warn() {
+  # if we have more than one parameter use structured logging
+  if [ $# -gt 1 ]; then
+    gum log --structured --level warn "$@"
+  else
+    gum log --level warn "$@"
+  fi 
+}

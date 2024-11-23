@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # ------------------------------------------------------------------------------
 # Copyright (c) 2014 Dan Stroot
 # All rights reserved.
@@ -21,6 +21,8 @@
 # ------------------------------------------------------------------------------
 
 source "../functions/dock_functions.sh"
+source "../functions/logging.sh"
+
 
 echo "Dock: customizing dock application icons"
 # WARNING: permanently clears your existing dock

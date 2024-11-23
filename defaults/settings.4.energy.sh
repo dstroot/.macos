@@ -16,22 +16,13 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
 
-info() {
-    local TEXT=$1
-    local PRINT="$(gum format -- "$TEXT")"
-    gum log --level info "$PRINT"
-}
+# shellcheck source="./functions/logging.sh"
+source "./functions/logging.sh"
 
-warn() {
-    local TEXT=$1
-    local PRINT="$(gum format -- "$TEXT")"
-    gum log --level warn "$PRINT"
-}
-
-info **Disable** Slightly dim the display on battery
+info "**Disable** Slightly dim the display on battery"
 /usr/libexec/PlistBuddy -c "Delete ':Battery Power:ReduceBrightness'" -c "Add ':Battery Power:ReduceBrightness' bool 'false'" /Library/Preferences/com.apple.PowerManagement.plist
 
-info Options: Wake for Network Access on battery: **Never**  (off=0, on=1)
+info "Options: Wake for Network Access on battery: **Never**  (off=0, on=1)"
 # -- on power --
 /usr/libexec/PlistBuddy -c "Delete ':AC Power:Wake On LAN'" -c "Add ':AC Power:Wake On LAN' integer '1'" /Library/Preferences/com.apple.PowerManagement.plist
 # -- on battery --

@@ -16,16 +16,7 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
 
-info() {
-    local TEXT=$1
-    local PRINT="$(gum format -- "$TEXT")"
-    gum log --level info "$PRINT"
-}
-
-warn() {
-    local TEXT=$1
-    local PRINT="$(gum format -- "$TEXT")"
-    gum log --level warn "$PRINT"
-}
+# shellcheck source="./functions/logging.sh"
+source "./functions/logging.sh"
 
 warn "**No Changes**"

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # ------------------------------------------------------------------------------
 # Copyright (c) 2014 Dan Stroot
 # All rights reserved.
@@ -16,23 +16,14 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
 
-info() {
-    local TEXT=$1
-    local PRINT="$(gum format -- "$TEXT")"
-    gum log --level info "$PRINT"
-}
+# shellcheck source="./functions/logging.sh"
+source "./functions/logging.sh"
 
-warn() {
-    local TEXT=$1
-    local PRINT="$(gum format -- "$TEXT")"
-    gum log --level warn "$PRINT"
-}
-
-info **Enable** App Store updates
+info "**Enable** App Store updates"
 /Library/Preferences/com.apple.SoftwareUpdate.plist
 /usr/libexec/PlistBuddy -c "Delete ':AutoUpdate'" -c "Add ':AutoUpdate' bool 'true'" /Library/Preferences/com.apple.commerce.plist
 
-info **Enable** MacOS updates --
+info "**Enable** MacOS updates"
 /usr/libexec/PlistBuddy -c "Delete ':AutomaticallyInstallMacOSUpdates'" -c "Add ':AutomaticallyInstallMacOSUpdates' bool 'true'" /Library/Preferences/com.apple.SoftwareUpdate.plist
 
 
@@ -42,6 +33,9 @@ info **Enable** MacOS updates --
 # 	Extensions: Click "i with circle" ⌽ for "sharing" and adjust
 
 # Sharing: Check that everything is off
+
+# systemsetup – configuration tool for certain machine settings in System Preferences.
+# scutil – Manage system configuration parameters
 
 # echo "Timezone: Set the timezone; see 'sudo systemsetup -listtimezones' for other values"
 # systemsetup -settimezone "America/Los_Angeles" > /dev/null
