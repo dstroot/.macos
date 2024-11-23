@@ -15,10 +15,20 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           system.7.displays.sh
-# PURPOSE:        System Settings Displays
-# VERSION:  1.0   Initial version
-# ------------------------------------------------------------------------------
+
+info() {
+    local TEXT=$1
+    local PRINT="$(gum format -- "$TEXT")"
+    gum log --level info "$PRINT"
+}
+
+warn() {
+    local TEXT=$1
+    local PRINT="$(gum format -- "$TEXT")"
+    gum log --level warn "$PRINT"
+}
+
+warn "**No Changes**"
 
 # **Disable** Automatically adjust brightness
 # Night Shift:Schedule: **Sunset to Sunrise**

@@ -15,10 +15,6 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           system.4.appearance.sh
-# PURPOSE:        System Settings Appearance
-# VERSION:  1.0   Initial version
-# ------------------------------------------------------------------------------
 
 info() {
     local TEXT=$1
@@ -32,12 +28,10 @@ warn() {
     gum log --level warn "$PRINT"
 }
 
-warn "**No Changes**"
+info "**Enable** reduce motion"
+/usr/libexec/PlistBuddy -c "Delete ':reduceMotion'" -c "Add ':reduceMotion' bool 'true'" "$HOME/Library/Preferences/com.apple.universalaccess.plist"
+/usr/libexec/PlistBuddy -c "Delete ':ReduceMotionEnabled'" -c "Add ':ReduceMotionEnabled' integer '1'" "$HOME/Library/Preferences/com.apple.Accessibility.plist"
 
-# echo "Appearance is set to auto"
-# # defaults delete "Apple Global Domain" "AppleInterfaceStyle"
-# defaults write "Apple Global Domain" "AppleInterfaceStyleSwitchesAutomatically" '1'
+# You also have to go into Accessibility and check off these two things (it's night and day with dragging and making the trackpad super awesome). Check Enable Dragging "without drag lock" and also choose Scrolling "with inertia" under Accessibility. These things make a world of difference and I'm not sure why they are buried in Accessibility. It makes dragging windows effortlessly and pleasant. I can't stand it any other way.
 
-# echo "General: Always show scrollbars"
-# # Possible values: `WhenScrolling`, `Automatic` and `Always`
-# defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+# The three-finger drag option is hidden in System Preferences > Accessibility. Click the Trackpad Options button at the bottom of the Accessibility window on Pointer Control. In the pop-up window, check the box for Enable dragging and choose three finger drag from the pull-down menu.

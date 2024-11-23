@@ -15,10 +15,19 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           system.1.battery.sh
-# PURPOSE:        System Settings Battery/Energy
-# VERSION:  1.0   Initial version
-# ------------------------------------------------------------------------------
 
-# Options:**Disable** Slightly dim the display on battery
-# **Disable** Power Nap
+info() {
+    local TEXT=$1
+    local PRINT="$(gum format -- "$TEXT")"
+    gum log --level info "$PRINT"
+}
+
+warn() {
+    local TEXT=$1
+    local PRINT="$(gum format -- "$TEXT")"
+    gum log --level warn "$PRINT"
+}
+
+info "Listen for: **Off**"
+/usr/libexec/PlistBuddy -c "Delete ':VoiceTrigger Enabled'" -c "Add ':VoiceTrigger Enabled' bool 'false'" "$HOME/Library/Preferences/com.apple.voicetrigger.plist"
+/usr/libexec/PlistBuddy -c "Delete ':VoiceTriggerUserEnabled'" -c "Add ':VoiceTriggerUserEnabled' bool 'false'" "$HOME/Library/Preferences/com.apple.Siri.plist"

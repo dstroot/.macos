@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # ------------------------------------------------------------------------------
 # Copyright (c) 2014 Dan Stroot
 # All rights reserved.
@@ -15,9 +15,17 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           system.5.apple_intelligence.sh
-# PURPOSE:        System Settings Apple Intelligence & Siri
-# VERSION:  1.0   Initial version
-# ------------------------------------------------------------------------------
 
-# Listen for: **Off**
+info() {
+    local TEXT=$1
+    local PRINT="$(gum format -- "$TEXT")"
+    gum log --level info "$PRINT"
+}
+
+warn() {
+    local TEXT=$1
+    local PRINT="$(gum format -- "$TEXT")"
+    gum log --level warn "$PRINT"
+}
+
+warn "**No Changes**"
