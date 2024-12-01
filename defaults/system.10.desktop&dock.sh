@@ -24,7 +24,7 @@ source "../functions/dock_functions.sh"
 source "../functions/logging.sh"
 
 
-echo "Dock: customizing dock application icons"
+info "Dock: customizing dock application icons"
 # WARNING: permanently clears your existing dock
 clear_dock
 
@@ -77,58 +77,61 @@ add_folder_to_dock "${HOME}/Pictures/Screenshots" -a 1 -d 0 -v 1
 # Downloads
 add_folder_to_dock "${HOME}/Downloads" -a 2 -d 0 -v 1
 
-# echo "Dock: Enable highlight hover effect for the grid view of a stack (Dock)"
+# info "Dock: Enable highlight hover effect for the grid view of a stack (Dock)"
 # defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
-echo "Dock: dock placement: bottom, left, right"
+info "Dock: dock placement: bottom, left, right"
 defaults write com.apple.dock "orientation" -string "bottom"
 
-echo "Dock: Set the icon size of Dock items to 50 pixels"
+info "Dock: Set the icon size of Dock items to 50 pixels"
 defaults write com.apple.dock tilesize -int 50
 
-echo "Dock: Change minimize/maximize window effect"
-defaults write com.apple.dock mineffect -string "scale"
+info "Dock: Change minimize/maximize window effect to 'Scale'"
+/usr/libexec/PlistBuddy -c "Delete ':mineffect'" -c "Add ':mineffect' string 'scale'" "$HOME/Library/Preferences/com.apple.dock.plist"
 
-echo "Dock: Minimize windows into their application’s icon"
-defaults write com.apple.dock minimize-to-application -bool true
+info "Dock: Minimize windows into their application’s icon"
+/usr/libexec/PlistBuddy -c "Delete ':minimize-to-application'" -c "Add ':minimize-to-application' bool 'true'" "$HOME/Library/Preferences/com.apple.dock.plist"
 
-echo "Dock: Show indicator lights for open applications in the Dock"
+info "Dock: Show indicator lights for open applications in the Dock"
 defaults write com.apple.dock show-process-indicators -bool true
 
-echo "Dock: Don’t animate opening applications from the Dock"
-defaults write com.apple.dock launchanim -bool false
+info "Dock: Don’t animate opening applications from the Dock"
+/usr/libexec/PlistBuddy -c "Delete ':launchanim'" -c "Add ':launchanim' bool 'false'" "$HOME/Library/Preferences/com.apple.dock.plist"
 
-echo "Dock: Remove the auto-hiding Dock delay"
+info "Dock: Remove the auto-hiding Dock delay"
 defaults write com.apple.dock autohide-delay -float 0
 
-echo "Dock: Remove the animation when hiding/showing the Dock"
+info "Dock: Remove the animation when hiding/showing the Dock"
 defaults write com.apple.dock autohide-time-modifier -float 0
 
-echo "Dock: Automatically hide and show the Dock"
-defaults write com.apple.dock autohide -bool true
+info "Dock: Automatically hide and show the Dock"
+/usr/libexec/PlistBuddy -c "Delete ':autohide'" -c "Add ':autohide' bool 'true'" "$HOME/Library/Preferences/com.apple.dock.plist"
 
-echo "Dock: Don’t show recent applications in Dock"
-defaults write com.apple.dock show-recents -bool false
+info "Dock: Don’t show recent applications in Dock"
+/usr/libexec/PlistBuddy -c "Delete ':show-recents'" -c "Add ':show-recents' bool 'false'" "$HOME/Library/Preferences/com.apple.dock.plist"
 
-echo "Click wallpaper to reveal deskop only in stage manager"
-defaults write "com.apple.WindowManager" "EnableStandardClickToShowDesktop" '0'
+info "Click wallpaper to reveal deskop only in stage manager"
+/usr/libexec/PlistBuddy -c "Delete ':EnableStandardClickToShowDesktop'" -c "Add ':EnableStandardClickToShowDesktop' bool 'false'" "$HOME/Library/Preferences/com.apple.WindowManager.plist"
 
-echo "Make launchpad icons smaller"
+info "Make launchpad icons smaller"
 defaults write com.apple.dock springboard-columns -int 14
 defaults write com.apple.dock springboard-rows -int 9
 
-# echo "Reset Launchpad to defaults"
+# info "Reset Launchpad to defaults"
 # defaults delete com.apple.dock springboard-rows
 # defaults delete com.apple.dock springboard-columns
 # defaults write com.apple.dock ResetLaunchPad -bool true
 
-echo "Mission Control: Speed up Mission Control animations"
+info "Mission Control: Speed up Mission Control animations"
 defaults write com.apple.dock expose-animation-duration -float 0.1
 
-echo "Mission Control: Group windows by application in Mission Control"
+info "Mission Control: Group windows by application in Mission Control"
 defaults write "com.apple.dock" "expose-group-apps" '1'
 
-echo "Dock: Set hot corners"
+info "**Disable** Mission Control: Drag windows to top of screen to enter Mission Control"
+defaults write "com.apple.dock" "enterMissionControlByTopWindowDrag" '0'
+
+info "Dock: Set hot corners"
 # Possible values:
 #  0: no-op
 #  2: Mission Control

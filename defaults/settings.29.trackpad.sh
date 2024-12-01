@@ -20,6 +20,23 @@
 # VERSION:  1.0   Initial version
 # ------------------------------------------------------------------------------
 
+# shellcheck source="./functions/logging.sh"
+source "../functions/logging.sh"
+
+info "**Enable** "Tap to click""
+/usr/libexec/PlistBuddy -c "Delete ':Clicking'" -c "Add ':Clicking' bool 'true'" "$HOME/Library/Preferences/com.apple.AppleMultitouchTrackpad.plist"
+/usr/libexec/PlistBuddy -c "Delete ':Clicking'" -c "Add ':Clicking' bool 'true'" "$HOME/Library/Preferences/com.apple.driver.AppleBluetoothMultitouch.trackpad.plist"
+
+info "Secondary click: **"Click or Tap With Two Fingers"**"
+/usr/libexec/PlistBuddy -c "Delete ':ContextMenuGesture'" -c "Add ':ContextMenuGesture' integer '1'" "$HOME/Library/Preferences/.GlobalPreferences.plist"
+/usr/libexec/PlistBuddy -c "Delete ':TrackpadRightClick'" -c "Add ':TrackpadRightClick' bool 'true'" "$HOME/Library/Preferences/com.apple.driver.AppleBluetoothMultitouch.trackpad.plist"
+/usr/libexec/PlistBuddy -c "Delete ':TrackpadRightClick'" -c "Add ':TrackpadRightClick' bool 'true'" "$HOME/Library/Preferences/com.apple.AppleMultitouchTrackpad.plist"
+
+info "**Increase** Tracking speed"
+/usr/libexec/PlistBuddy -c "Delete ':com.apple.trackpad.scaling'" -c "Add ':com.apple.trackpad.scaling' real '1.000000'" "$HOME/Library/Preferences/.GlobalPreferences.plist"
+
+#---------------------------
+
 echo "Trackpad: enable tap to click for this user and for the login screen"
 
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1

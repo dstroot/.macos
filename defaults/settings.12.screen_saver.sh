@@ -15,11 +15,11 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           mouse.sh
-# PURPOSE:        Setup mouse
-# VERSION:  1.0   Initial version
-# ------------------------------------------------------------------------------
 
-# echo "Mouse: Set mouse and scrolling speed"
-# defaults write NSGlobalDomain com.apple.mouse.scaling -int 3
-# defaults write NSGlobalDomain com.apple.scrollwheel.scaling -float 0.6875
+# shellcheck source="./functions/logging.sh"
+source "./functions/logging.sh"
+
+warn "**No Changes**"
+
+# **Disable** Automatically adjust brightness
+# Night Shift:Schedule: **Sunset to Sunrise**

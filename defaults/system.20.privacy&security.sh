@@ -15,30 +15,29 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           security.sh
-# PURPOSE:        Manage Security Settings
-# VERSION:  1.0   Initial version
-# ------------------------------------------------------------------------------
 # Based on:
 # https://github.com/drduh/macOS-Security-and-Privacy-Guide
 # https://benchmarks.cisecurity.org/tools2/osx/CIS_Apple_OSX_10.11_Benchmark_v1.0.0.pdf
 # ------------------------------------------------------------------------------
 
-echo "Security: Check for software updates daily, not just once per week"
+# shellcheck source="./functions/logging.sh"
+source "../functions/logging.sh"
+
+info "Security: Check for software updates daily, not just once per week"
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 # Require password immediately after sleep or screen saver begins
-echo "Security: Require password imemdiately"
+info "Security: Require password imemdiately"
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-echo "Security: Turn on Firewall"
+info "Security: Turn on Firewall"
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
 
-echo "Security: Enable firewall logging"
+info "Security: Enable firewall logging"
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setloggingmode on
 
-echo "Security: Enable stealth mode"
+info "Security: Enable stealth mode"
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
 
 # Do not automatically allow signed software to receive incoming connections

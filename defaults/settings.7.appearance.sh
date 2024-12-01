@@ -15,10 +15,6 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ------------------------------------------------------------------------------
-# NAME:           system.4.appearance.sh
-# PURPOSE:        System Settings Appearance
-# VERSION:  1.0   Initial version
-# ------------------------------------------------------------------------------
 
 # shellcheck source="./functions/logging.sh"
 source "../functions/logging.sh"
