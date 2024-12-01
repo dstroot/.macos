@@ -36,3 +36,15 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # echo "Keyboard: Set a blazingly fast keyboard repeat rate"
 # defaults write NSGlobalDomain KeyRepeat -int 1
 # defaults write NSGlobalDomain InitialKeyRepeat -int 10
+
+info "Key Repeat -> **Fast**"
+/usr/libexec/PlistBuddy -c "Delete ':KeyRepeat'" -c "Add ':KeyRepeat' real '2.000000'" "$HOME/Library/Preferences/.GlobalPreferences.plist"
+
+info "Delay Until Repeat -> **Short**"
+/usr/libexec/PlistBuddy -c "Delete ':InitialKeyRepeat'" -c "Add ':InitialKeyRepeat' real '25.000000'" "$HOME/Library/Preferences/.GlobalPreferences.plist"
+
+info "Press fn key to: **Show Emoji & Symbols**"
+defaults write "com.apple.HIToolbox" "AppleFnUsageType" '2'
+
+info "Keyboard Shortcuts: Spotlight **Disable** Show Spotlight Search (because we are using Raycast instead)"
+
